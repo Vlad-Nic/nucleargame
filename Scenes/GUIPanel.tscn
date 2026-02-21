@@ -1,0 +1,40 @@
+[gd_scene format=3 uid="uid://bo4ut652ljvef"]
+
+[ext_resource type="PackedScene" uid="uid://bgcayy35nber" path="res://MiniGames/Numble.tscn" id="1_n8cko"]
+[ext_resource type="Script" uid="uid://bnsdl52feu5d6" path="res://Scenes/GuiPanel.cs" id="1_o5e6b"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_dv78n"]
+size = Vector2(3, 2)
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_n8cko"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_n8cko"]
+resource_local_to_scene = true
+transparency = 1
+shading_mode = 0
+albedo_texture = SubResource("ViewportTexture_n8cko")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_dv78n"]
+size = Vector3(3, 2, 0.1)
+
+[node name="GuiPanel" type="Node3D" unique_id=431956978]
+process_mode = 3
+script = ExtResource("1_o5e6b")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=2140074042]
+gui_embed_subwindows = true
+size = Vector2i(560, 360)
+render_target_update_mode = 4
+
+[node name="Numble" parent="SubViewport" unique_id=262309314 instance=ExtResource("1_n8cko")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1865164255]
+mesh = SubResource("QuadMesh_dv78n")
+surface_material_override/0 = SubResource("StandardMaterial3D_n8cko")
+
+[node name="Area3D" type="Area3D" parent="MeshInstance3D" unique_id=383337975]
+input_capture_on_drag = true
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D" unique_id=975211304]
+shape = SubResource("BoxShape3D_dv78n")

@@ -2,7 +2,7 @@
 using System;
 using System.Linq;
 
-public partial class Numble : Node2D
+public partial class Numble : Control
 {
 	//Constants
 	private const int Slots      = 4;
