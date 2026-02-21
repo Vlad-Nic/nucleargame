@@ -1,12 +1,18 @@
 [gd_scene format=3 uid="uid://bqlnhh4hr1rhq"]
 
 [ext_resource type="PackedScene" uid="uid://gcffo5xrgpoa" path="res://Assets/Computer/scene.gltf" id="1_hqwdr"]
+[ext_resource type="Script" uid="uid://baie3sjxaxa4n" path="res://Game/Game.cs" id="1_iv3md"]
 [ext_resource type="PackedScene" uid="uid://bo4ut652ljvef" path="res://Scenes/GUIPanel.tscn" id="2_vrr3t"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hqwdr"]
 size = Vector3(3.1802979, 2.247345, 3.3286133)
 
-[node name="Game" type="Node3D" unique_id=1059251469]
+[node name="Game" type="Node3D" unique_id=1059251469 node_paths=PackedStringArray("PlayerCam")]
+script = ExtResource("1_iv3md")
+PlayerCam = NodePath("Camera3D")
+
+[node name="GuiPanel" parent="." unique_id=431956978 instance=ExtResource("2_vrr3t")]
+transform = Transform3D(0.57007086, 0, 0, 0, 0.6527701, 0, 0, 0, 0.66, 0.057396263, 1.2559044, -0.29680294)
 
 [node name="Computer" parent="." unique_id=684270220 instance=ExtResource("1_hqwdr")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.078, 0, 0)
@@ -16,8 +22,27 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70623803, 1.0177765, -0.61
 visible = false
 shape = SubResource("BoxShape3D_hqwdr")
 
+[node name="GuiPanel2" parent="." unique_id=1209827852 instance=ExtResource("2_vrr3t")]
+transform = Transform3D(-2.4918586e-08, 0, 0.65999997, 0, 0.65277004, 0, -0.5700708, 0, -2.8849515e-08, -2.4448452, 1.2559044, 2.5313716)
+
+[node name="Computer2" parent="." unique_id=1212618555 instance=ExtResource("1_hqwdr")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1480422, 0, 2.510768)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Computer2" unique_id=937688222]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70623803, 1.0177765, -0.61083984)
+visible = false
+shape = SubResource("BoxShape3D_hqwdr")
+
+[node name="GuiPanel3" parent="." unique_id=1972053848 instance=ExtResource("2_vrr3t")]
+transform = Transform3D(8.940697e-08, 0, -0.6599999, 0, 0.65277, 0, 0.57007074, 0, 8.940697e-08, 2.8172355, 1.2559044, 2.348407)
+
+[node name="Computer3" parent="." unique_id=1791822737 instance=ExtResource("1_hqwdr")]
+transform = Transform3D(-1, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, -1, 2.520432, 0, 2.3690107)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Computer3" unique_id=865203575]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70623803, 1.0177765, -0.61083984)
+visible = false
+shape = SubResource("BoxShape3D_hqwdr")
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=951513297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18407023, 0.9643934, 2.3440886)
-
-[node name="GuiPanel" parent="." unique_id=431956978 instance=ExtResource("2_vrr3t")]
-transform = Transform3D(0.57007086, 0, 0, 0, 0.6294138, 0, 0, 0, 0.66, 0.057396263, 1.2559044, -0.29680294)

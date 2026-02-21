@@ -27,7 +27,7 @@ gui_embed_subwindows = true
 size = Vector2i(560, 360)
 render_target_update_mode = 4
 
-[node name="Background" type="ColorRect" parent="SubViewport" unique_id=1539563647]
+[node name="Background" type="ColorRect" parent="SubViewport" unique_id=1560932401]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -35,7 +35,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1, 0.1, 0.13, 1)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport" unique_id=463064876]
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport" unique_id=452310360]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
@@ -48,7 +48,7 @@ offset_bottom = 78.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TimerLabel" type="Label" parent="SubViewport/VBoxContainer" unique_id=671822266]
+[node name="TimerLabel" type="Label" parent="SubViewport/VBoxContainer" unique_id=761704381]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_o5e6b")
@@ -56,11 +56,11 @@ theme_override_font_sizes/font_size = 30
 text = "TIME REMAINING: 15"
 horizontal_alignment = 1
 
-[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/VBoxContainer" unique_id=407020499]
+[node name="HBoxContainer" type="HBoxContainer" parent="SubViewport/VBoxContainer" unique_id=1491085511]
 layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Slot0" type="LineEdit" parent="SubViewport/VBoxContainer/HBoxContainer" unique_id=933660024]
+[node name="Slot0" type="LineEdit" parent="SubViewport/VBoxContainer/HBoxContainer" unique_id=1480550972]
 custom_minimum_size = Vector2(62, 56)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_o5e6b")
@@ -69,7 +69,7 @@ placeholder_text = "-"
 alignment = 1
 max_length = 1
 
-[node name="Slot1" type="LineEdit" parent="SubViewport/VBoxContainer/HBoxContainer" unique_id=1141210178]
+[node name="Slot1" type="LineEdit" parent="SubViewport/VBoxContainer/HBoxContainer" unique_id=1835592710]
 custom_minimum_size = Vector2(62, 56)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_o5e6b")
@@ -78,7 +78,7 @@ placeholder_text = "-"
 alignment = 1
 max_length = 1
 
-[node name="Slot2" type="LineEdit" parent="SubViewport/VBoxContainer/HBoxContainer" unique_id=557402734]
+[node name="Slot2" type="LineEdit" parent="SubViewport/VBoxContainer/HBoxContainer" unique_id=2121201834]
 custom_minimum_size = Vector2(62, 56)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_o5e6b")
@@ -87,7 +87,7 @@ placeholder_text = "-"
 alignment = 1
 max_length = 1
 
-[node name="Slot3" type="LineEdit" parent="SubViewport/VBoxContainer/HBoxContainer" unique_id=231328135]
+[node name="Slot3" type="LineEdit" parent="SubViewport/VBoxContainer/HBoxContainer" unique_id=743728273]
 custom_minimum_size = Vector2(62, 56)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_o5e6b")
@@ -96,14 +96,14 @@ placeholder_text = "-"
 alignment = 1
 max_length = 1
 
-[node name="SubmitButton" type="Button" parent="SubViewport/VBoxContainer/HBoxContainer" unique_id=1256620518]
+[node name="SubmitButton" type="Button" parent="SubViewport/VBoxContainer/HBoxContainer" unique_id=1426368962]
 custom_minimum_size = Vector2(100, 56)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_o5e6b")
 theme_override_font_sizes/font_size = 30
 text = "Guess"
 
-[node name="MessageLabel" type="Label" parent="SubViewport/VBoxContainer" unique_id=1671896439]
+[node name="MessageLabel" type="Label" parent="SubViewport/VBoxContainer" unique_id=16554796]
 custom_minimum_size = Vector2(30, 10)
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
@@ -112,19 +112,19 @@ theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="GuessGrid" type="GridContainer" parent="SubViewport/VBoxContainer" unique_id=2094579263]
+[node name="GuessGrid" type="GridContainer" parent="SubViewport/VBoxContainer" unique_id=724859823]
 layout_mode = 2
 theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 4
 
-[node name="NewGameButton" type="Button" parent="SubViewport/VBoxContainer" unique_id=646688485]
+[node name="NewGameButton" type="Button" parent="SubViewport/VBoxContainer" unique_id=1036868119]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_o5e6b")
 theme_override_font_sizes/font_size = 30
 text = "New Game"
 
-[node name="GameTimer" type="Timer" parent="SubViewport" unique_id=1138822911]
+[node name="GameTimer" type="Timer" parent="SubViewport" unique_id=582076054]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1865164255]
 mesh = SubResource("QuadMesh_dv78n")
