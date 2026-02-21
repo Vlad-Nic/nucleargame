@@ -1,8 +1,8 @@
-[gd_scene format=3 uid="uid://bgcayy35nber"]
+[gd_scene load_steps=2 format=3 uid="uid://bgcayy35nber"]
 
 [ext_resource type="Script" uid="uid://ki203i0hh6e8" path="res://Scripts/Numble.cs" id="1_uxgpr"]
 
-[node name="Numble" type="Control" unique_id=262309314]
+[node name="Numble" type="Control"]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -11,7 +11,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uxgpr")
 
-[node name="Background" type="ColorRect" parent="." unique_id=491594637]
+[node name="Background" type="ColorRect" parent="."]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -20,7 +20,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1, 0.1, 0.13, 1)
 
-[node name="TimerLabel" type="Label" parent="." unique_id=379981516]
+[node name="TimerLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -35,7 +35,7 @@ theme_override_font_sizes/font_size = 24
 text = "Time: 15"
 horizontal_alignment = 1
 
-[node name="GuessGrid" type="GridContainer" parent="." unique_id=1368774559]
+[node name="GuessGrid" type="GridContainer" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -51,7 +51,7 @@ theme_override_constants/h_separation = 8
 theme_override_constants/v_separation = 8
 columns = 4
 
-[node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=910946869]
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -63,7 +63,7 @@ offset_bottom = 116.0
 grow_horizontal = 2
 theme_override_constants/separation = 8
 
-[node name="Slot0" type="LineEdit" parent="HBoxContainer" unique_id=1729061299]
+[node name="Slot0" type="LineEdit" parent="HBoxContainer"]
 custom_minimum_size = Vector2(62, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
@@ -71,7 +71,7 @@ placeholder_text = "-"
 alignment = 1
 max_length = 1
 
-[node name="Slot1" type="LineEdit" parent="HBoxContainer" unique_id=2080726309]
+[node name="Slot1" type="LineEdit" parent="HBoxContainer"]
 custom_minimum_size = Vector2(62, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
@@ -79,7 +79,7 @@ placeholder_text = "-"
 alignment = 1
 max_length = 1
 
-[node name="Slot2" type="LineEdit" parent="HBoxContainer" unique_id=1273576948]
+[node name="Slot2" type="LineEdit" parent="HBoxContainer"]
 custom_minimum_size = Vector2(62, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
@@ -87,7 +87,7 @@ placeholder_text = "-"
 alignment = 1
 max_length = 1
 
-[node name="Slot3" type="LineEdit" parent="HBoxContainer" unique_id=1447678911]
+[node name="Slot3" type="LineEdit" parent="HBoxContainer"]
 custom_minimum_size = Vector2(62, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 26
@@ -95,13 +95,13 @@ placeholder_text = "-"
 alignment = 1
 max_length = 1
 
-[node name="SubmitButton" type="Button" parent="HBoxContainer" unique_id=1190248635]
+[node name="SubmitButton" type="Button" parent="HBoxContainer"]
 custom_minimum_size = Vector2(100, 56)
 layout_mode = 2
 theme_override_font_sizes/font_size = 18
 text = "Guess"
 
-[node name="MessageLabel" type="Label" parent="." unique_id=933750690]
+[node name="MessageLabel" type="Label" parent="."]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -116,7 +116,7 @@ theme_override_font_sizes/font_size = 18
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="NewGameButton" type="Button" parent="." unique_id=1952037094]
+[node name="NewGameButton" type="Button" parent="."]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -132,4 +132,4 @@ grow_vertical = 0
 theme_override_font_sizes/font_size = 18
 text = "New Game"
 
-[node name="GameTimer" type="Timer" parent="." unique_id=531628429]
+[node name="GameTimer" type="Timer" parent="."]
