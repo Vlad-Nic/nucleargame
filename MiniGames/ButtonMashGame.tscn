@@ -1,0 +1,27 @@
+[gd_scene format=3 uid="uid://f3xl62dkbtjr"]
+
+[ext_resource type="Script" uid="uid://bccbppgsrr25j" path="res://Scripts/ButtonMash.cs" id="1_a2cd3"]
+
+[node name="ButtonMashGame" type="Control" unique_id=32019228]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_a2cd3")
+
+[node name="Button" type="Button" parent="." unique_id=248032002]
+layout_mode = 0
+offset_left = 260.0
+offset_top = 135.0
+offset_right = 333.0
+offset_bottom = 200.0
+text = "Press"
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=1295545235]
+layout_mode = 0
+offset_left = 136.0
+offset_top = 84.0
+offset_right = 454.0
+offset_bottom = 117.0
+value = 100.0
+show_percentage = false
+
+[connection signal="pressed" from="Button" to="." method="OnButtonPressed"]
