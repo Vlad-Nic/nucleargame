@@ -4,7 +4,7 @@ using System.Collections.Generic;
 
 public partial class NuclearRods : Control
 {
-	// ── Constants ─────────────────────────────────────────────────────────────
+	//Constants
 	private const int   RodCount  = 5;
 	private const int   TimeLimit = 30;
 
@@ -38,7 +38,7 @@ public partial class NuclearRods : Control
 		new(0.90f, 0.20f, 0.20f),
 	};
 
-	// ── Node refs ─────────────────────────────────────────────────────────────
+	//Node refs
 	private Label   _timerLabel   = null!;
 	private Label   _messageLabel = null!;
 	private Label   _instructionLabel = null!;
@@ -47,7 +47,7 @@ public partial class NuclearRods : Control
 	private Button  _restartButton= null!;
 	private Timer   _gameTimer    = null!;
 
-	// ── Runtime data ──────────────────────────────────────────────────────────
+	//Runtime data
 	private record RodData(Panel Visual, Vector2 HomePosition, int SizeIndex, bool Placed = false);
 	private record BoxData(Panel Visual, Vector2 Centre, int SizeIndex, bool Filled);
 
@@ -228,7 +228,7 @@ public partial class NuclearRods : Control
 		{
 			if (_boxes[hitBox].SizeIndex == rod.SizeIndex)
 			{
-				// ✅ Correct — snap rod into box
+				//Correct — snap rod into box
 				SnapRodToBox(_draggedRod, hitBox);
 			}
 			else
