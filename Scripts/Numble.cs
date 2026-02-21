@@ -4,6 +4,24 @@ using System.Linq;
 
 public partial class Numble : Control
 {
+	//Export Vars
+	[Export] public Font font { get; set; } = null!;
+	
+	//Node refs — names match your scene exactly
+	[Export] private Label         _timerLabel   = null!;
+	[Export] private Label         _messageLabel = null!;
+	[Export] private GridContainer _guessGrid    = null!;
+	[Export] private Button        _submitButton = null!;
+	[Export] private Button        _newGameButton= null!;
+	[Export] private Timer         _gameTimer    = null!;
+	[Export] private LineEdit _slot0 = null!;
+	[Export] private LineEdit _slot1 = null!;
+	[Export] private LineEdit _slot2 = null!;
+	[Export] private LineEdit _slot3 = null!;
+
+	private LineEdit[] _inputSlots = null!;
+	
+	
 	//Constants
 	private const int Slots      = 4;
 	private const int MaxGuesses = 6;
@@ -19,14 +37,6 @@ public partial class Numble : Control
 	private static readonly Color CEmpty   = new(0.18f, 0.18f, 0.21f); // unfilled
 	private static readonly Color CWhite   = new(1f, 1f, 1f);
 
-	//Node refs — names match your scene exactly
-	private Label         _timerLabel   = null!;
-	private Label         _messageLabel = null!;
-	private GridContainer _guessGrid    = null!;
-	private Button        _submitButton = null!;
-	private Button        _newGameButton= null!;
-	private Timer         _gameTimer    = null!;
-	private LineEdit[]    _inputSlots   = null!;
 
 	// Grid cells built at runtime into GuessGrid
 	private (StyleBoxFlat Style, Label Lbl)[,] _cells = null!;
@@ -40,28 +50,19 @@ public partial class Numble : Control
 	
 	public override void _Ready()
 	{
-		// Node paths taken directly from your .tscn
-		_timerLabel    = GetNode<Label>("TimerLabel");
-		_messageLabel  = GetNode<Label>("MessageLabel");
-		_guessGrid     = GetNode<GridContainer>("GuessGrid");
-		_submitButton  = GetNode<Button>("HBoxContainer/SubmitButton");
-		_newGameButton = GetNode<Button>("NewGameButton");
-		_gameTimer     = GetNode<Timer>("GameTimer");
-
-		// Slots are Slot0–Slot3 inside HBoxContainer
-		_inputSlots = new LineEdit[Slots];
+		_inputSlots = new LineEdit[] { _slot0, _slot1, _slot2, _slot3 };
+		
+		// Slots are assigned via export, just wire up the events
 		for (int i = 0; i < Slots; i++)
 		{
-			var slot = GetNode<LineEdit>($"HBoxContainer/Slot{i}");
-			_inputSlots[i] = slot;
 			int captured = i;
-			slot.TextChanged += (text) => OnSlotChanged(text, captured);
+			_inputSlots[i].TextChanged += (text) => OnSlotChanged(text, captured);
+			_inputSlots[i].GuiInput    += (e)    => OnSlotInput(e, captured);
 		}
 
 		_submitButton.Pressed  += OnSubmit;
 		_newGameButton.Pressed += NewGame;
 
-		// Timer: make sure it ticks every 1 second
 		_gameTimer.WaitTime = 1.0;
 		_gameTimer.OneShot  = false;
 		_gameTimer.Timeout  += OnTick;
@@ -105,6 +106,7 @@ public partial class Numble : Control
 					VerticalAlignment   = VerticalAlignment.Center,
 					AutowrapMode        = TextServer.AutowrapMode.Off
 				};
+				lbl.AddThemeFontOverride("font", font);
 				lbl.AddThemeFontSizeOverride("font_size", 28);
 				lbl.AddThemeColorOverride("font_color", CWhite);
 
@@ -271,15 +273,27 @@ public partial class Numble : Control
 		}
 
 		if (filtered.Length == 1 && slotIdx < Slots - 1)
-		{
-			// Auto-advance forward when a num is typed
 			_inputSlots[slotIdx + 1].GrabFocus();
-		}
-		else if (filtered.Length == 0 && slotIdx > 0)
+	}
+	
+	private void OnSlotInput(InputEvent e, int slotIdx)
+	{
+		if (e is not InputEventKey key || !key.Pressed) return;
+
+		if (key.Keycode == Key.Backspace)
 		{
-			// Backspace
-			_inputSlots[slotIdx - 1].GrabFocus();
-			_inputSlots[slotIdx - 1].CaretColumn = _inputSlots[slotIdx - 1].Text.Length;
+			_inputSlots[slotIdx].Text = "";
+			if (slotIdx > 0)
+			{
+				_inputSlots[slotIdx - 1].GrabFocus();
+				_inputSlots[slotIdx - 1].Text = "";
+			}
+			GetViewport().SetInputAsHandled();
+		}
+		else if (key.Keycode == Key.Enter || key.Keycode == Key.KpEnter)
+		{
+			OnSubmit();
+			GetViewport().SetInputAsHandled();
 		}
 	}
 

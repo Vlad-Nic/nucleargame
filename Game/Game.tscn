@@ -20,4 +20,4 @@ shape = SubResource("BoxShape3D_hqwdr")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18407023, 0.9643934, 2.3440886)
 
 [node name="GuiPanel" parent="." unique_id=431956978 instance=ExtResource("2_vrr3t")]
-transform = Transform3D(0.66, 0, 0, 0, 0.66, 0, 0, 0, 0.66, 0.057396263, 1.2559044, -0.29680294)
+transform = Transform3D(0.57007086, 0, 0, 0, 0.6294138, 0, 0, 0, 0.66, 0.057396263, 1.2559044, -0.29680294)
