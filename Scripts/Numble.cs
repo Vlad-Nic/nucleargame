@@ -10,7 +10,7 @@ public partial class Numble : Node2D
 	private const int TimeLimit  = 60;
 	
 
-
+	//checked
 
 	// Colors
 	private static readonly Color CCorrect = new(0.18f, 0.62f, 0.35f); // green  – right digit, right place
