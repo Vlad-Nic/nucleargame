@@ -1,0 +1,91 @@
+[gd_scene format=3 uid="uid://cu0u3g0snaotv"]
+
+[ext_resource type="Script" uid="uid://bnuxala0uqo3p" path="res://Scripts/NuclearRods.cs" id="1_chn4s"]
+
+[node name="NuclearRods" type="Control" unique_id=529923940]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_chn4s")
+
+[node name="Background" type="ColorRect" parent="." unique_id=201084909]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = 480.0
+offset_bottom = 720.0
+color = Color(0.08, 0.1, 0.08, 1)
+
+[node name="TitleLabel" type="Label" parent="." unique_id=244096983]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 7.0
+offset_right = 780.0
+offset_bottom = 46.0
+theme_override_colors/font_color = Color(0.4, 1, 0.4, 1)
+theme_override_font_sizes/font_size = 28
+text = "NUCLEAR ROD SORTING"
+horizontal_alignment = 1
+
+[node name="TimerLabel" type="Label" parent="." unique_id=1887116807]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 51.0
+offset_right = 780.0
+offset_bottom = 83.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 22
+text = "Time: 30"
+horizontal_alignment = 1
+
+[node name="InstructionLabel" type="Label" parent="." unique_id=1860826851]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 90.0
+offset_right = 780.0
+offset_bottom = 114.0
+theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
+theme_override_font_sizes/font_size = 14
+text = "Drag each rod to the matching box!"
+horizontal_alignment = 1
+
+[node name="RodContainer" type="Control" parent="." unique_id=1655991993]
+anchors_preset = 0
+offset_left = 300.0
+offset_top = 102.0
+offset_right = 780.0
+offset_bottom = 402.0
+
+[node name="BoxContainer" type="Control" parent="." unique_id=1036093844]
+anchors_preset = 0
+offset_left = 300.0
+offset_top = 406.0
+offset_right = 780.0
+offset_bottom = 636.0
+
+[node name="MessageLabel" type="Label" parent="." unique_id=2013694838]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 365.0
+offset_right = 780.0
+offset_bottom = 400.0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_font_sizes/font_size = 20
+horizontal_alignment = 1
+
+[node name="RestartButton" type="Button" parent="." unique_id=1982953329]
+visible = false
+layout_mode = 0
+offset_left = 155.0
+offset_top = 672.0
+offset_right = 325.0
+offset_bottom = 714.0
+theme_override_font_sizes/font_size = 18
+text = "Play Again"
+
+[node name="GameTimer" type="Timer" parent="." unique_id=1990332130]
