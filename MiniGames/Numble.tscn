@@ -1,9 +1,9 @@
-[gd_scene load_steps=2 format=3 uid="uid://bgcayy35nber"]
+[gd_scene format=3 uid="uid://bgcayy35nber"]
 
 [ext_resource type="Script" uid="uid://ki203i0hh6e8" path="res://Scripts/Numble.cs" id="1_uxgpr"]
 [ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_twrq0"]
 
-[node name="Numble" type="Control"]
+[node name="Numble" type="Control" unique_id=1825611334 node_paths=PackedStringArray("_timerLabel", "_messageLabel", "_guessGrid", "_submitButton", "_newGameButton", "_gameTimer", "_slot0", "_slot1", "_slot2", "_slot3")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,7 +23,7 @@ _slot1 = NodePath("VBoxContainer/HBoxContainer/Slot1")
 _slot2 = NodePath("VBoxContainer/HBoxContainer/Slot2")
 _slot3 = NodePath("VBoxContainer/HBoxContainer/Slot3")
 
-[node name="Background" type="ColorRect" parent="."]
+[node name="Background" type="ColorRect" parent="." unique_id=358803789]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
@@ -32,7 +32,7 @@ grow_horizontal = 2
 grow_vertical = 2
 color = Color(0.1, 0.1, 0.13, 1)
 
-[node name="TimerLabel" type="Label" parent="."]
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1795405576]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -46,7 +46,7 @@ offset_bottom = 78.5
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="TimerLabel" type="Label" parent="VBoxContainer" unique_id=379981516]
+[node name="TimerLabel" type="Label" parent="VBoxContainer" unique_id=1585954607]
 layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_twrq0")
@@ -54,35 +54,11 @@ theme_override_font_sizes/font_size = 30
 text = "TIME REMAINING: 15"
 horizontal_alignment = 1
 
-[node name="GuessGrid" type="GridContainer" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -180.0
-offset_top = -455.0
-offset_right = 180.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_constants/h_separation = 8
-theme_override_constants/v_separation = 8
-columns = 4
-
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -282.0
-offset_top = 60.0
-offset_right = 282.0
-offset_bottom = 116.0
-grow_horizontal = 2
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer" unique_id=1305089013]
+layout_mode = 2
 theme_override_constants/separation = 8
 
-[node name="Slot0" type="LineEdit" parent="HBoxContainer"]
+[node name="Slot0" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=326093205]
 custom_minimum_size = Vector2(62, 56)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_twrq0")
@@ -91,7 +67,7 @@ placeholder_text = "-"
 alignment = 1
 max_length = 1
 
-[node name="Slot1" type="LineEdit" parent="HBoxContainer"]
+[node name="Slot1" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=906842246]
 custom_minimum_size = Vector2(62, 56)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_twrq0")
@@ -100,7 +76,7 @@ placeholder_text = "-"
 alignment = 1
 max_length = 1
 
-[node name="Slot2" type="LineEdit" parent="HBoxContainer"]
+[node name="Slot2" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=1034689585]
 custom_minimum_size = Vector2(62, 56)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_twrq0")
@@ -109,7 +85,7 @@ placeholder_text = "-"
 alignment = 1
 max_length = 1
 
-[node name="Slot3" type="LineEdit" parent="HBoxContainer"]
+[node name="Slot3" type="LineEdit" parent="VBoxContainer/HBoxContainer" unique_id=49254317]
 custom_minimum_size = Vector2(62, 56)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_twrq0")
@@ -118,43 +94,32 @@ placeholder_text = "-"
 alignment = 1
 max_length = 1
 
-[node name="SubmitButton" type="Button" parent="HBoxContainer"]
+[node name="SubmitButton" type="Button" parent="VBoxContainer/HBoxContainer" unique_id=249041093]
 custom_minimum_size = Vector2(100, 56)
 layout_mode = 2
 theme_override_fonts/font = ExtResource("2_twrq0")
 theme_override_font_sizes/font_size = 30
 text = "Guess"
 
-[node name="MessageLabel" type="Label" parent="."]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -240.0
-offset_top = 130.0
-offset_right = 240.0
-offset_bottom = 166.0
-grow_horizontal = 2
+[node name="MessageLabel" type="Label" parent="VBoxContainer" unique_id=1289115651]
+custom_minimum_size = Vector2(30, 10)
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_twrq0")
 theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 autowrap_mode = 3
 
-[node name="NewGameButton" type="Button" parent="."]
-layout_mode = 1
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = 282.0
-offset_top = -76.0
-offset_right = 452.0
-offset_bottom = -34.0
-grow_horizontal = 2
-grow_vertical = 0
-theme_override_font_sizes/font_size = 18
+[node name="GuessGrid" type="GridContainer" parent="VBoxContainer" unique_id=475499559]
+layout_mode = 2
+theme_override_constants/h_separation = 8
+theme_override_constants/v_separation = 8
+columns = 4
+
+[node name="NewGameButton" type="Button" parent="VBoxContainer" unique_id=225875687]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_twrq0")
+theme_override_font_sizes/font_size = 30
 text = "New Game"
 
-[node name="GameTimer" type="Timer" parent="."]
+[node name="GameTimer" type="Timer" parent="." unique_id=1392126083]
