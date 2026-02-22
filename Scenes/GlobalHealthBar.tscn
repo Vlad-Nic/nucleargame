@@ -5,34 +5,54 @@
 
 [node name="GlobalHealthBar" type="Control" unique_id=95263201]
 layout_mode = 3
-anchors_preset = 0
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+grow_horizontal = 2
 script = ExtResource("1_nkew5")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=1488834013]
-layout_mode = 0
-offset_left = 237.0
-offset_right = 878.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -320.5
+offset_right = 320.5
 offset_bottom = 81.0
+grow_horizontal = 2
 color = Color(0.101960786, 0.101960786, 0.12941177, 1)
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=152252171]
 modulate = Color(0, 0.61960787, 0.21568628, 1)
-layout_mode = 0
-offset_left = 252.0
-offset_top = 39.0
-offset_right = 860.0
-offset_bottom = 69.0
-theme_override_colors/font_color = Color(1, 0, 0, 1)
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -304.0
+offset_top = 40.0
+offset_right = 304.0
+offset_bottom = 70.0
+grow_horizontal = 2
+theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_fonts/font = ExtResource("2_454ny")
 theme_override_font_sizes/font_size = 26
 value = 100.0
 
 [node name="Label" type="Label" parent="." unique_id=1999331489]
-layout_mode = 0
-offset_left = 435.0
-offset_top = 7.0
-offset_right = 701.0
-offset_bottom = 35.0
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -133.0
+offset_top = 6.0
+offset_right = 133.0
+offset_bottom = 34.0
+grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_454ny")
 theme_override_font_sizes/font_size = 28
 text = "!REACTOR STABILITY!"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1600352804]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
