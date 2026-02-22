@@ -2,12 +2,12 @@
 
 [ext_resource type="PackedScene" uid="uid://gcffo5xrgpoa" path="res://Assets/Computer/scene.gltf" id="1_hqwdr"]
 [ext_resource type="Script" uid="uid://baie3sjxaxa4n" path="res://Scripts/Game.cs" id="1_iv3md"]
-[ext_resource type="PackedScene" uid="uid://bo4ut652ljvef" path="res://Scenes/NumbleGUIPanel.tscn" id="2_vrr3t"]
+[ext_resource type="PackedScene" path="res://Scenes/NumbleGUIPanel.tscn" id="3_oscxy"]
 [ext_resource type="PackedScene" uid="uid://bgb7hgp3harjp" path="res://Scenes/GUIPanel2.tscn" id="4_jxerj"]
 [ext_resource type="PackedScene" uid="uid://ibf22yok7sha" path="res://Scenes/GUIPanel3.tscn" id="5_ghvq8"]
 [ext_resource type="PackedScene" uid="uid://dk3t4gae56xeb" path="res://Assets/Table/scene.gltf" id="6_ghvq8"]
 [ext_resource type="PackedScene" uid="uid://b3h235l7yk87r" path="res://Assets/ControlRoom/scene.gltf" id="7_fuqhk"]
-[ext_resource type="PackedScene" path="res://Scenes/PauseMenu.tscn" id="8_pause"]
+[ext_resource type="PackedScene" uid="uid://ckf47b2ahsc76" path="res://Scenes/PauseMenu.tscn" id="8_pause"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hqwdr"]
 size = Vector3(3.1802979, 2.247345, 3.3286133)
@@ -19,12 +19,10 @@ albedo_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
 material = SubResource("StandardMaterial3D_fuqhk")
 size = Vector3(50, 0.1, 50)
 
-[node name="Game" type="Node3D" unique_id=1059251469 node_paths=PackedStringArray("_centerPanel", "_leftPanel", "_rightPanel", "PlayerCam")]
+[node name="Game" type="Node3D" unique_id=1059251469 node_paths=PackedStringArray("_leftPanel", "PlayerCam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("1_iv3md")
-_centerPanel = NodePath("ButtonMashGuiPanel")
-_leftPanel = NodePath("NumbleGuiPanel")
-_rightPanel = NodePath("RodGuiPanel")
+_leftPanel = NodePath("NumbleGui")
 PlayerCam = NodePath("Camera3D")
 _zoomedPositionRight = Vector3(1.8, 1.246, 6.187)
 
@@ -36,8 +34,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70623803, 1.0177765, -0.61
 visible = false
 shape = SubResource("BoxShape3D_hqwdr")
 
-[node name="NumbleGuiPanel" parent="." unique_id=1209827852 instance=ExtResource("2_vrr3t")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.4448452, 1.2559042, 6.339509)
+[node name="NumbleGui" parent="." unique_id=431956978 instance=ExtResource("3_oscxy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.4566288, 1.1746273, 6.271582)
 
 [node name="Computer2" parent="." unique_id=1212618555 instance=ExtResource("1_hqwdr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1480422, 0, 6.3189054)
@@ -129,4 +127,4 @@ transform = Transform3D(2.4914405, 0, 2.4914405, 0, 3.523429, 0, -2.4914405, 0, 
 [node name="ControlRoom3" parent="RoomPrefabs" unique_id=1412169573 instance=ExtResource("7_fuqhk")]
 transform = Transform3D(-2.4914408, 0, -2.4914403, 0, 3.523429, 0, 2.4914403, 0, -2.4914408, -14.882873, -3.5540357, 14.350916)
 
-[node name="PauseMenu" parent="." instance=ExtResource("8_pause")]
+[node name="PauseMenu" parent="." unique_id=1068675935 instance=ExtResource("8_pause")]
