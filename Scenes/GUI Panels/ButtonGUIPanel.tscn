@@ -18,7 +18,7 @@ albedo_texture = SubResource("ViewportTexture_6hw7b")
 [sub_resource type="BoxShape3D" id="BoxShape3D_jfl88"]
 size = Vector3(1.8, 1.4, 0.1)
 
-[node name="ButtonGUIPanel" type="Node3D" unique_id=11216432 node_paths=PackedStringArray("_area", "_subViewport", "_area", "_subViewport")]
+[node name="ButtonMashGuiPanel" type="Node3D" unique_id=11216432 node_paths=PackedStringArray("_area", "_subViewport", "_area", "_subViewport")]
 script = ExtResource("1_08etr")
 _area = NodePath("MeshInstance3D/Area3D")
 _subViewport = NodePath("SubViewport")

@@ -2,8 +2,10 @@
 
 [ext_resource type="Script" uid="uid://c0u8wj1qhyt1j" path="res://Scripts/NumbleGui.cs" id="1_o5e6b"]
 [ext_resource type="PackedScene" uid="uid://bgcayy35nber" path="res://MiniGames/Numble.tscn" id="2_o5e6b"]
-[ext_resource type="Script" uid="uid://ctvm28owwwr84" path="res://Scripts/MonitorScreen.cs" id="2_s2rjy"]
+[ext_resource type="Script" uid="uid://ctvm28owwwr84" path="res://Scripts/MonitorScreenNumble.cs" id="2_s2rjy"]
 [ext_resource type="PackedScene" uid="uid://mfg37dlbrxk8" path="res://Scenes/GameIdle.tscn" id="3_t6dpu"]
+[ext_resource type="PackedScene" uid="uid://bldhud5ggsjnf" path="res://Scenes/GameComplete.tscn" id="5_3s4qe"]
+[ext_resource type="PackedScene" uid="uid://t2tlop86col4" path="res://Scenes/GameFail.tscn" id="6_sfv3g"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_dv78n"]
 size = Vector2(1.8, 1.4)
@@ -20,7 +22,7 @@ albedo_texture = SubResource("ViewportTexture_n8cko")
 [sub_resource type="BoxShape3D" id="BoxShape3D_dv78n"]
 size = Vector3(1.8, 1.4, 0.1)
 
-[node name="NumbleGui" type="Node3D" unique_id=431956978 node_paths=PackedStringArray("_area", "_subViewport", "_area", "_subViewport")]
+[node name="NumbleGuiPanel" type="Node3D" unique_id=431956978 node_paths=PackedStringArray("_area", "_subViewport", "_area", "_subViewport")]
 process_mode = 3
 script = ExtResource("1_o5e6b")
 _area = NodePath("MeshInstance3D/Area3D")
@@ -34,7 +36,7 @@ gui_embed_subwindows = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="MonitorScreen" type="Control" parent="SubViewport" unique_id=279290618 node_paths=PackedStringArray("_gameIdle", "_numble")]
+[node name="MonitorScreen" type="Control" parent="SubViewport" unique_id=279290618 node_paths=PackedStringArray("_gameStateIdle", "_numble", "_gameComplete", "_gameFail")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -42,14 +44,22 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("2_s2rjy")
-_gameIdle = NodePath("GameIdle")
+_gameStateIdle = NodePath("GameIdle")
 _numble = NodePath("Numble")
+_gameComplete = NodePath("GameComplete")
+_gameFail = NodePath("GameFail")
 
 [node name="GameIdle" parent="SubViewport/MonitorScreen" unique_id=959119981 node_paths=PackedStringArray("_timer") instance=ExtResource("3_t6dpu")]
 layout_mode = 1
 _timer = NodePath("../Timer")
 
 [node name="Numble" parent="SubViewport/MonitorScreen" unique_id=1825611334 instance=ExtResource("2_o5e6b")]
+layout_mode = 1
+
+[node name="GameComplete" parent="SubViewport/MonitorScreen" unique_id=1212426715 instance=ExtResource("5_3s4qe")]
+layout_mode = 1
+
+[node name="GameFail" parent="SubViewport/MonitorScreen" unique_id=1341758829 instance=ExtResource("6_sfv3g")]
 layout_mode = 1
 
 [node name="Timer" type="Timer" parent="SubViewport/MonitorScreen" unique_id=2025781510]

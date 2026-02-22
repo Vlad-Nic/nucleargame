@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://vrk6ytqbvbw6" path="res://Scripts/RodGui.cs" id="1_fbwr5"]
 [ext_resource type="PackedScene" uid="uid://c2s57g7gqcx4g" path="res://MiniGames/NuclearRods.tscn" id="1_q4sfg"]
+[ext_resource type="PackedScene" uid="uid://dyu7yxjilbaw2" path="res://Scenes/RodGameIdle.tscn" id="2_ekwsc"]
+[ext_resource type="Script" uid="uid://nd8jqn2khwem" path="res://Scripts/MonitorScreenRods.cs" id="2_ntbos"]
+[ext_resource type="PackedScene" uid="uid://bldhud5ggsjnf" path="res://Scenes/GameComplete.tscn" id="5_1x7at"]
+[ext_resource type="PackedScene" uid="uid://t2tlop86col4" path="res://Scenes/GameFail.tscn" id="6_ntbos"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6jcne"]
 size = Vector2(1.8, 1.4)
@@ -18,7 +22,7 @@ albedo_texture = SubResource("ViewportTexture_7i2gn")
 [sub_resource type="BoxShape3D" id="BoxShape3D_de17b"]
 size = Vector3(1.8, 1.4, 0.1)
 
-[node name="GuiPanel3" type="Node3D" unique_id=386153917 node_paths=PackedStringArray("_area", "_subViewport", "_area", "_subViewport")]
+[node name="RodGuiPanel" type="Node3D" unique_id=386153917 node_paths=PackedStringArray("_area", "_subViewport", "_area", "_subViewport")]
 script = ExtResource("1_fbwr5")
 _area = NodePath("MeshInstance3D/Area3D")
 _subViewport = NodePath("SubViewport")
@@ -31,7 +35,33 @@ gui_embed_subwindows = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="NuclearRods" parent="SubViewport" unique_id=529923940 instance=ExtResource("1_q4sfg")]
+[node name="MonitorScreen" type="Control" parent="SubViewport" unique_id=525330046 node_paths=PackedStringArray("_gameStateIdle", "_nuclearRods", "_gameComplete", "_gameFail")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_ntbos")
+_gameStateIdle = NodePath("GameIdle")
+_nuclearRods = NodePath("NuclearRods")
+_gameComplete = NodePath("GameComplete")
+_gameFail = NodePath("GameFail")
+
+[node name="GameIdle" parent="SubViewport/MonitorScreen" unique_id=959119981 node_paths=PackedStringArray("_timer") instance=ExtResource("2_ekwsc")]
+layout_mode = 1
+_timer = NodePath("../Timer")
+
+[node name="NuclearRods" parent="SubViewport/MonitorScreen" unique_id=529923940 instance=ExtResource("1_q4sfg")]
+layout_mode = 1
+
+[node name="GameComplete" parent="SubViewport/MonitorScreen" unique_id=1345429977 instance=ExtResource("5_1x7at")]
+layout_mode = 1
+
+[node name="GameFail" parent="SubViewport/MonitorScreen" unique_id=501098367 instance=ExtResource("6_ntbos")]
+layout_mode = 1
+
+[node name="Timer" type="Timer" parent="SubViewport/MonitorScreen" unique_id=1509074071]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=289819695]
 mesh = SubResource("QuadMesh_6jcne")
