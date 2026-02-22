@@ -3,8 +3,9 @@ using System;
 
 public partial class ButtonMash : Control
 {
-	[Export] public float DrainSpeed = 15f; //Speed at which the progressbar drains
-	[Export] public float RefillAmount = 2f; //How much the progressbar will refill when the button is pressed
+	[Export] public float DrainSpeed = 2f; //Speed at which the progressbar drains
+	[Export] public float RefillAmount = 1f; //How much the progressbar will refill when the button is pressed
+	[Export] public float GlobalHealthPenalty = 5f; //how much the global health will lose on fail
 	
 	private ProgressBar _progressbar;
 	private Button _button;
@@ -24,6 +25,8 @@ public partial class ButtonMash : Control
 		if (_progressbar.Value <= 0)
 		{
 			GD.Print("The Bar is empty");
+			GlobalHealth.Instance.Drain(GlobalHealthPenalty);
+			_progressbar.Value += 100;
 			// GetTree().ChangeSceneToFile("res://GameOver.tscn") from my test file with the mp4
 		}
 	}
