@@ -10,7 +10,7 @@ public partial class MainMenu : Control
 
 	private void OnPlay()
 	{
-		GetTree().ChangeSceneToFile("res://Game/Game.tscn");
+		GetTree().ChangeSceneToFile("res://Scenes/Intro.tscn");
 	}
 
 	private void OnQuit()

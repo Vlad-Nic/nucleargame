@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://djib1s7lvskg7"]
 
 [ext_resource type="Script" uid="uid://cr2dc8hapitxy" path="res://Scripts/Intro.cs" id="1_intro"]
-[ext_resource type="AudioStream" uid="uid://5a03hcuio8bt" path="res://Audio/JimmyAudios1.wav" id="2_rrrc0"]
+[ext_resource type="AudioStream" uid="uid://5a03hcuio8bt" path="res://Assets/Audio/JimmyAudios1.wav" id="2_rrrc0"]
 [ext_resource type="Texture2D" uid="uid://cfijm3v61qcnr" path="res://Assets/Images/Nuclear.png" id="3_vmpge"]
 
 [node name="Intro" type="Control" unique_id=532993736]
