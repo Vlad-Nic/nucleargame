@@ -6,6 +6,8 @@
 [ext_resource type="Script" uid="uid://nd8jqn2khwem" path="res://Scripts/MonitorScreenRods.cs" id="2_ntbos"]
 [ext_resource type="PackedScene" uid="uid://bldhud5ggsjnf" path="res://Scenes/GameComplete.tscn" id="5_1x7at"]
 [ext_resource type="PackedScene" uid="uid://t2tlop86col4" path="res://Scenes/GameFail.tscn" id="6_ntbos"]
+[ext_resource type="AudioStream" uid="uid://d34sirh4u8boo" path="res://Audio/success.mp3" id="7_x3uha"]
+[ext_resource type="AudioStream" uid="uid://b66pkjm723fj7" path="res://Audio/failure.mp3" id="8_ex2lx"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_6jcne"]
 size = Vector2(1.8, 1.4)
@@ -52,8 +54,10 @@ _gameFail = NodePath("GameFail")
 layout_mode = 1
 _timer = NodePath("../Timer")
 
-[node name="NuclearRods" parent="SubViewport/MonitorScreen" unique_id=529923940 instance=ExtResource("1_q4sfg")]
+[node name="NuclearRods" parent="SubViewport/MonitorScreen" unique_id=529923940 node_paths=PackedStringArray("_fail", "_success") instance=ExtResource("1_q4sfg")]
 layout_mode = 1
+_fail = NodePath("../../../Fail")
+_success = NodePath("../../../Success")
 
 [node name="GameComplete" parent="SubViewport/MonitorScreen" unique_id=1345429977 instance=ExtResource("5_1x7at")]
 layout_mode = 1
@@ -72,3 +76,11 @@ input_capture_on_drag = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D" unique_id=2102120751]
 shape = SubResource("BoxShape3D_de17b")
+
+[node name="Success" type="AudioStreamPlayer3D" parent="." unique_id=1075095682]
+stream = ExtResource("7_x3uha")
+volume_db = -25.0
+
+[node name="Fail" type="AudioStreamPlayer3D" parent="." unique_id=1674777472]
+stream = ExtResource("8_ex2lx")
+volume_db = -25.0

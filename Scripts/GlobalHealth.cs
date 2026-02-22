@@ -1,4 +1,5 @@
 using Godot;
+using System;
 
 public partial class GlobalHealth : Node
 {
@@ -22,7 +23,9 @@ public partial class GlobalHealth : Node
 		CurrentHealth = Mathf.Clamp(CurrentHealth - amount, 0, MaxHealth);
 		EmitSignal(SignalName.HealthChanged, CurrentHealth, MaxHealth);
 		if (CurrentHealth <= 0)
+		{
 			TriggerGameOver();
+		}
 	}
 
 	public void Heal(float amount)
@@ -33,13 +36,13 @@ public partial class GlobalHealth : Node
 
 	public void ResetHealth()
 	{
+		SetProcess(true);
 		CurrentHealth = MaxHealth;
 		EmitSignal(SignalName.HealthChanged, CurrentHealth, MaxHealth);
 	}
-
 	private void TriggerGameOver()
 	{
-		SetProcess(false);
-		GetTree().ChangeSceneToFile("res://Scenes/GameOver.tscn");
+		SetProcess(false); //stop multiple triggers
+		//GetTree().ChangeSceneToFile("res://GameOver.tscn");
 	}
 }

@@ -59,6 +59,8 @@ public partial class PauseMenu : CanvasLayer
 	{
 		GetTree().Paused = false;
 		Input.MouseMode = Input.MouseModeEnum.Hidden;
+		GlobalHealth.Instance.ResetHealth();
+		
 		GetTree().ReloadCurrentScene();
 	}
 

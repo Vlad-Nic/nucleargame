@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public partial class NuclearRods : Control
 {
+	[Export] public AudioStreamPlayer3D _fail;
+	[Export] public AudioStreamPlayer3D _success;
 	[Signal] public delegate void GameWonEventHandler();
 	[Signal] public delegate void GameLostEventHandler();
 	[Export] public float GlobalHealthPenalty = 10f; //how much the global health will lose on fail
@@ -234,7 +236,6 @@ public partial class NuclearRods : Control
 			}
 			else
 			{
-				// ❌ Wrong box — instant game over
 				rod.Visual.Position = rod.HomePosition; // snap back first so it's visible
 				EndGame(false);
 			}
@@ -298,6 +299,7 @@ public partial class NuclearRods : Control
 			_messageLabel.Text = "All rods stored safely!";
 			_messageLabel.AddThemeColorOverride("font_color", new Color(0.2f, 1f, 0.3f));
 			EmitSignal(SignalName.GameWon);
+			_success.Play();
 		}
 		else if (_timeLeft <= 0)
 		{
@@ -305,6 +307,7 @@ public partial class NuclearRods : Control
 			_messageLabel.AddThemeColorOverride("font_color", new Color(1f, 0.3f, 0.2f));
 			GlobalHealth.Instance.Drain(GlobalHealthPenalty);
 			EmitSignal(SignalName.GameLost);
+			_fail.Play();
 		}
 		else
 		{
@@ -312,6 +315,7 @@ public partial class NuclearRods : Control
 			_messageLabel.AddThemeColorOverride("font_color", new Color(1f, 0.3f, 0.2f));
 			GlobalHealth.Instance.Drain(GlobalHealthPenalty);
 			EmitSignal(SignalName.GameLost);
+			_fail.Play();
 		}
 	}
 

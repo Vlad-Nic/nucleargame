@@ -2,10 +2,12 @@
 
 [ext_resource type="Script" uid="uid://c0u8wj1qhyt1j" path="res://Scripts/NumbleGui.cs" id="1_o5e6b"]
 [ext_resource type="PackedScene" uid="uid://bgcayy35nber" path="res://MiniGames/Numble.tscn" id="2_o5e6b"]
-[ext_resource type="Script" path="res://Scripts/MonitorScreenNumble.cs" id="2_sfv3g"]
+[ext_resource type="Script" uid="uid://ctvm28owwwr84" path="res://Scripts/MonitorScreenNumble.cs" id="2_sfv3g"]
 [ext_resource type="PackedScene" uid="uid://mfg37dlbrxk8" path="res://Scenes/GameIdle.tscn" id="3_t6dpu"]
 [ext_resource type="PackedScene" uid="uid://bldhud5ggsjnf" path="res://Scenes/GameComplete.tscn" id="5_3s4qe"]
 [ext_resource type="PackedScene" uid="uid://t2tlop86col4" path="res://Scenes/GameFail.tscn" id="6_sfv3g"]
+[ext_resource type="AudioStream" uid="uid://d34sirh4u8boo" path="res://Audio/success.mp3" id="7_m4jsa"]
+[ext_resource type="AudioStream" uid="uid://b66pkjm723fj7" path="res://Audio/failure.mp3" id="8_lhixr"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_dv78n"]
 size = Vector2(1.8, 1.4)
@@ -53,8 +55,10 @@ _gameFail = NodePath("GameFail")
 layout_mode = 1
 _timer = NodePath("../Timer")
 
-[node name="Numble" parent="SubViewport/MonitorScreen" unique_id=1825611334 instance=ExtResource("2_o5e6b")]
+[node name="Numble" parent="SubViewport/MonitorScreen" unique_id=1825611334 node_paths=PackedStringArray("_fail", "_success") instance=ExtResource("2_o5e6b")]
 layout_mode = 1
+_fail = NodePath("../../../Fail")
+_success = NodePath("../../../Success")
 
 [node name="GameComplete" parent="SubViewport/MonitorScreen" unique_id=1212426715 instance=ExtResource("5_3s4qe")]
 layout_mode = 1
@@ -73,3 +77,11 @@ input_capture_on_drag = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D" unique_id=975211304]
 shape = SubResource("BoxShape3D_dv78n")
+
+[node name="Success" type="AudioStreamPlayer3D" parent="." unique_id=1556904445]
+stream = ExtResource("7_m4jsa")
+volume_db = -25.0
+
+[node name="Fail" type="AudioStreamPlayer3D" parent="." unique_id=1836475041]
+stream = ExtResource("8_lhixr")
+volume_db = -25.0

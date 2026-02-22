@@ -4,6 +4,8 @@ using System.Linq;
 
 public partial class Numble : Control
 {
+	[Export] public AudioStreamPlayer3D _fail;
+	[Export] public AudioStreamPlayer3D _success;
 	[Signal] public delegate void GameWonEventHandler();
 	[Signal] public delegate void GameLostEventHandler();
 	[Export] public float GlobalHealthPenalty = 15f; //how much the global health will lose on fail
@@ -240,12 +242,14 @@ public partial class Numble : Control
 			_messageLabel.Text = message;
 			_messageLabel.AddThemeColorOverride("font_color", new Color(0.2f, 1f, 0.4f));
 			_messageLabel.Visible = true;
+			_success.Play();
 		}
 		else
 		{
 			_messageLabel.Text = message;
 			_messageLabel.Visible = true;
 			GlobalHealth.Instance.Drain(GlobalHealthPenalty);
+			_fail.Play();
 		}
 
 		_gameOver = true;
