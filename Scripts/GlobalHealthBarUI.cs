@@ -15,6 +15,7 @@ public partial class GlobalHealthBarUI : Control
 		OnHealthChanged(GlobalHealth.Instance.CurrentHealth,GlobalHealth.Instance.MaxHealth);
 		
 		timer.WaitTime = 240f;
+		timer.Timeout += OnTimerTimeout;
 		timer.Start();
 	}
 	
@@ -32,6 +33,7 @@ public partial class GlobalHealthBarUI : Control
 	public override void _ExitTree()
 	{
 		GlobalHealth.Instance.HealthChanged -= OnHealthChanged;
+		timer.Timeout -= OnTimerTimeout;
 	}
 
 	private void OnHealthChanged(float current, float max)
