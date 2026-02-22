@@ -1,18 +1,27 @@
 [gd_scene format=3 uid="uid://bqlnhh4hr1rhq"]
 
 [ext_resource type="PackedScene" uid="uid://gcffo5xrgpoa" path="res://Assets/Computer/scene.gltf" id="1_hqwdr"]
-[ext_resource type="Script" uid="uid://baie3sjxaxa4n" path="res://Game/Game.cs" id="1_iv3md"]
+[ext_resource type="Script" uid="uid://baie3sjxaxa4n" path="res://Scripts/Game.cs" id="1_iv3md"]
 [ext_resource type="PackedScene" uid="uid://bo4ut652ljvef" path="res://Scenes/GUIPanel.tscn" id="2_vrr3t"]
+[ext_resource type="PackedScene" uid="uid://bgb7hgp3harjp" path="res://Scenes/GUIPanel2.tscn" id="4_jxerj"]
+[ext_resource type="PackedScene" uid="uid://u8luhqyt3mmd" path="res://Scenes/GUIPanel3.tscn" id="5_ghvq8"]
+[ext_resource type="PackedScene" uid="uid://dk3t4gae56xeb" path="res://Assets/Table/scene.gltf" id="6_ghvq8"]
+[ext_resource type="PackedScene" uid="uid://b3h235l7yk87r" path="res://Assets/ControlRoom/scene.gltf" id="7_fuqhk"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hqwdr"]
 size = Vector3(3.1802979, 2.247345, 3.3286133)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fuqhk"]
+albedo_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_fuqhk"]
+material = SubResource("StandardMaterial3D_fuqhk")
+size = Vector3(50, 0.1, 50)
+
 [node name="Game" type="Node3D" unique_id=1059251469 node_paths=PackedStringArray("PlayerCam")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("1_iv3md")
 PlayerCam = NodePath("Camera3D")
-
-[node name="GuiPanel" parent="." unique_id=431956978 instance=ExtResource("2_vrr3t")]
-transform = Transform3D(0.57007086, 0, 0, 0, 0.6527701, 0, 0, 0, 0.66, 0.057396263, 1.2559044, -0.29680294)
 
 [node name="Computer" parent="." unique_id=684270220 instance=ExtResource("1_hqwdr")]
 transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 0.078, 0, 0)
@@ -22,7 +31,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70623803, 1.0177765, -0.61
 visible = false
 shape = SubResource("BoxShape3D_hqwdr")
 
-[node name="GuiPanel2" parent="." unique_id=1209827852 instance=ExtResource("2_vrr3t")]
+[node name="NumbleGuiPanel" parent="." unique_id=1209827852 instance=ExtResource("2_vrr3t")]
 transform = Transform3D(-2.4918586e-08, 0, 0.65999997, 0, 0.65277004, 0, -0.5700708, 0, -2.8849515e-08, -2.4448452, 1.2559044, 2.5313716)
 
 [node name="Computer2" parent="." unique_id=1212618555 instance=ExtResource("1_hqwdr")]
@@ -33,8 +42,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70623803, 1.0177765, -0.61
 visible = false
 shape = SubResource("BoxShape3D_hqwdr")
 
-[node name="GuiPanel3" parent="." unique_id=1972053848 instance=ExtResource("2_vrr3t")]
-transform = Transform3D(8.940697e-08, 0, -0.6599999, 0, 0.65277, 0, 0.57007074, 0, 8.940697e-08, 2.8172355, 1.2559044, 2.348407)
+[node name="ButtonMashGuiPanel" parent="." unique_id=11216432 instance=ExtResource("4_jxerj")]
+transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0.0711987, 1.234, -0.279)
 
 [node name="Computer3" parent="." unique_id=1791822737 instance=ExtResource("1_hqwdr")]
 transform = Transform3D(-1, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, -1, 2.520432, 0, 2.3690107)
@@ -44,5 +53,72 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70623803, 1.0177765, -0.61
 visible = false
 shape = SubResource("BoxShape3D_hqwdr")
 
+[node name="RodGuiPanel" parent="." unique_id=386153917 instance=ExtResource("5_ghvq8")]
+transform = Transform3D(-2.8412401e-08, 0, -0.65, 0, 0.65, 0, 0.65, 0, -2.8412401e-08, 2.8031025, 1.2458123, 2.3702893)
+
 [node name="Camera3D" type="Camera3D" parent="." unique_id=951513297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18407023, 0.9643934, 2.3440886)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=405059194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.005309105, 5.834964, 8.146603)
+mesh = SubResource("BoxMesh_fuqhk")
+
+[node name="Lighting" type="Node3D" parent="." unique_id=710976207]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Lighting" unique_id=2125199907]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.9302838, 4.488449, 3.933811)
+light_energy = 12.248
+light_volumetric_fog_energy = 0.634
+light_size = 0.23
+shadow_enabled = true
+
+[node name="SpotLight3D2" type="SpotLight3D" parent="Lighting" unique_id=113840963]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.22776675, 4.488449, 1.3198302)
+light_energy = 12.248
+light_volumetric_fog_energy = 0.634
+light_size = 0.23
+shadow_enabled = true
+
+[node name="SpotLight3D3" type="SpotLight3D" parent="Lighting" unique_id=1428292736]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.0942578, 4.488449, 2.9730055)
+light_energy = 12.248
+light_volumetric_fog_energy = 0.634
+light_size = 0.23
+shadow_enabled = true
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lighting" unique_id=1438950273]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.647186, 2.44039)
+light_energy = 10.0
+light_size = 0.683
+
+[node name="OmniLight3D3" type="SpotLight3D" parent="Lighting" unique_id=1510481110]
+transform = Transform3D(0.14520428, 0.3995812, -0.90512466, -0.063293375, 0.9166978, 0.39453655, 0.98737514, 0, 0.15839928, 8.26042, 2.516276, 17.068102)
+light_energy = 7.0
+spot_range = 13.707768
+
+[node name="OmniLight3D4" type="SpotLight3D" parent="Lighting" unique_id=298371138]
+transform = Transform3D(0.11529502, -0.38596585, 0.91528004, -0.06329338, 0.9166978, 0.39453658, -0.99131274, -0.10341927, 0.08126162, -10.73958, 2.516276, 17.068102)
+light_energy = 7.0
+spot_range = 13.707768
+
+[node name="TablePrefabs" type="Node3D" parent="." unique_id=414672261]
+
+[node name="Sketchfab_Scene" parent="TablePrefabs" unique_id=1183281253 instance=ExtResource("6_ghvq8")]
+transform = Transform3D(0.0040844604, 0, 0, 0, 0.0040844604, 0, 0, 0, 0.0040844604, -2.7733812, -0.26977205, 2.0547638)
+
+[node name="Sketchfab_Scene2" parent="TablePrefabs" unique_id=1713463147 instance=ExtResource("6_ghvq8")]
+transform = Transform3D(0.0040844604, 0, 0, 0, 0.0040844604, 0, 0, 0, 0.0040844604, 3.2266188, -0.26977205, 2.0547638)
+
+[node name="Sketchfab_Scene3" parent="TablePrefabs" unique_id=2138554850 instance=ExtResource("6_ghvq8")]
+transform = Transform3D(-1.7853742e-10, 0, 0.005468326, 0, 0.00408446, 0, -0.00408446, 0, -2.390281e-10, 0.22661877, -0.26977205, -0.6259258)
+
+[node name="RoomPrefabs" type="Node3D" parent="." unique_id=1929083791]
+
+[node name="ControlRoom" parent="RoomPrefabs" unique_id=1971799830 instance=ExtResource("7_fuqhk")]
+transform = Transform3D(-2.4914405, 0, 2.4914405, 0, 3.523429, 0, -2.4914405, 0, -2.4914405, 2.5476828, -3.5540357, 1.8860397)
+
+[node name="ControlRoom2" parent="RoomPrefabs" unique_id=1330307448 instance=ExtResource("7_fuqhk")]
+transform = Transform3D(2.4914405, 0, 2.4914405, 0, 3.523429, 0, -2.4914405, 0, 2.4914405, 14.987295, -3.5540357, 19.257513)
+
+[node name="ControlRoom3" parent="RoomPrefabs" unique_id=1412169573 instance=ExtResource("7_fuqhk")]
+transform = Transform3D(-2.4914408, 0, -2.4914403, 0, 3.523429, 0, 2.4914403, 0, -2.4914408, -14.882873, -3.5540357, 14.350916)

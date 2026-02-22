@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bo4ut652ljvef"]
 
-[ext_resource type="Script" uid="uid://bnsdl52feu5d6" path="res://Scenes/GuiPanel.cs" id="1_o5e6b"]
+[ext_resource type="Script" uid="uid://bnsdl52feu5d6" path="res://Scripts/GuiPanel.cs" id="1_o5e6b"]
 [ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_o5e6b"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_dv78n"]
