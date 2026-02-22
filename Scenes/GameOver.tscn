@@ -68,3 +68,14 @@ THANK YOU FOR WORKING WITH US.
 [node name="CharTimer" type="Timer" parent="." unique_id=795702693]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1175673179]
+
+[node name="Control2" type="Control" parent="." unique_id=728830153]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background2" type="ColorRect" parent="Control2" unique_id=1213885119]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
