@@ -4,7 +4,7 @@ public partial class GlobalHealth : Node
 {
 	public static GlobalHealth Instance { get; private set; }
 
-	[Export] public float MaxHealth = 100f;
+	[Export] public float MaxHealth = 10f;
 	public float CurrentHealth { get; private set; }
 
 	[Signal]

@@ -1,8 +1,8 @@
 using Godot;
 
-public partial class GameOver : Control
+public partial class WinScreen : Control
 {
-	[Export] public AudioStream GameOverAudio { get; set; } = null!;
+	[Export] public AudioStream WinAudio { get; set; } = null!;
 
 	private Label _textLabel = null!;
 	private Timer _charTimer = null!;
@@ -19,17 +19,17 @@ public partial class GameOver : Control
 		_charTimer = GetNode<Timer>("CharTimer");
 		_audio = GetNode<AudioStreamPlayer>("AudioStreamPlayer");
 
-		_fullText = GetNode<TextEdit>("GameOverText").Text.Trim();
+		_fullText = GetNode<TextEdit>("WinText").Text.Trim();
 		_textLabel.Text = "";
 
-		_charTimer.WaitTime = 0.06;
+		_charTimer.WaitTime = 0.074;
 		_charTimer.OneShot = false;
 		_charTimer.Timeout += OnCharTick;
 		_charTimer.Start();
 
-		if (GameOverAudio != null)
+		if (WinAudio != null)
 		{
-			_audio.Stream = GameOverAudio;
+			_audio.Stream = WinAudio;
 			_audio.Play();
 		}
 	}

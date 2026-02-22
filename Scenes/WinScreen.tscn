@@ -1,0 +1,92 @@
+[gd_scene format=3 uid="uid://c80tpe75v637y"]
+
+[ext_resource type="Script" uid="uid://da4580332py36" path="res://Scripts/WinScreen.cs" id="1_win"]
+[ext_resource type="AudioStream" uid="uid://do6bb7wjtum3" path="res://Assets/Audio/PossibleWin.wav" id="2_82r0j"]
+[ext_resource type="Texture2D" uid="uid://d4clib2vlqmos" path="res://Assets/Images/FireWork.png" id="3_82r0j"]
+[ext_resource type="Texture2D" uid="uid://bh4iov588bbwt" path="res://Assets/Images/Trophy.png" id="3_fy21p"]
+
+[node name="WinScreen" type="Control" unique_id=1605429023]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_win")
+WinAudio = ExtResource("2_82r0j")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1218639884]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="TextLabel" type="Label" parent="." unique_id=1502415517]
+layout_mode = 0
+offset_left = 80.0
+offset_top = 80.0
+offset_right = 1200.0
+offset_bottom = 900.0
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+theme_override_font_sizes/font_size = 20
+autowrap_mode = 3
+
+[node name="PromptLabel" type="Label" parent="." unique_id=875133573]
+layout_mode = 0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -36.0
+theme_override_colors/font_color = Color(0.3, 0.6, 0.3, 0.7)
+theme_override_font_sizes/font_size = 13
+text = "PRESS ANY KEY TO RETURN TO MAIN MENU"
+horizontal_alignment = 1
+
+[node name="WinText" type="TextEdit" parent="." unique_id=1111585447]
+layout_mode = 0
+text = "TECHNICIANS HAVE ARRIVED AND SWITCHED THE SYSTEM BACK TO AUTOMATIC OPERATIONS.
+
+THANK YOU FOR THE ASSISTANCE AND STOPPING A DISASTER! WE DIDN'T WANT TO BE
+THE ONES WHO ARE KNOWN FOR INCORRECTLY BOILING WATER.
+
+ALSO THIS WILL BE PUT TOWARDS YOUR UNPAID INTERNSHIP HOURS. YOU ARE ALSO BEING LET GO,
+AS WE HAVE NO NEED FOR YOU ANYMORE...
+
+THANK YOU FOR WORKING WITH US!
+"
+
+[node name="CharTimer" type="Timer" parent="." unique_id=562424032]
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=527814321]
+
+[node name="Control2" type="Control" parent="." unique_id=712035880]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Background2" type="ColorRect" parent="Control2" unique_id=1007355418]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 1)
+
+[node name="Control" type="Control" parent="." unique_id=456761852]
+layout_direction = 4
+anchors_preset = 0
+offset_left = 2087.0
+offset_top = 961.0
+offset_right = 2119.0
+offset_bottom = 1001.0
+
+[node name="Trophy" type="Sprite2D" parent="Control" unique_id=1613333411]
+position = Vector2(-1097.0001, -294)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("3_fy21p")
+
+[node name="FireWork2" type="Sprite2D" parent="Control" unique_id=2119668500]
+position = Vector2(-1483, -160)
+texture = ExtResource("3_82r0j")
+
+[node name="FireWork" type="Sprite2D" parent="Control" unique_id=304139020]
+position = Vector2(-660, -160)
+texture = ExtResource("3_82r0j")

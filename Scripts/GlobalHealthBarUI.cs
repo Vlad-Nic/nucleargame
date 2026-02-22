@@ -1,5 +1,4 @@
 using Godot;
-using System;
 
 public partial class GlobalHealthBarUI : Control
 {
@@ -12,13 +11,13 @@ public partial class GlobalHealthBarUI : Control
 		_bar = GetNode<ProgressBar>("ProgressBar");
 
 		GlobalHealth.Instance.HealthChanged += OnHealthChanged;
-		OnHealthChanged(GlobalHealth.Instance.CurrentHealth,GlobalHealth.Instance.MaxHealth);
-		
+		OnHealthChanged(GlobalHealth.Instance.CurrentHealth, GlobalHealth.Instance.MaxHealth);
+
 		timer.WaitTime = 240f;
 		timer.Timeout += OnTimerTimeout;
 		timer.Start();
 	}
-	
+
 	public override void _Process(double delta)
 	{
 		int totalSeconds = Mathf.CeilToInt((float)timer.TimeLeft);
@@ -29,7 +28,7 @@ public partial class GlobalHealthBarUI : Control
 
 		_timeRemaining.Text = $"{minutes}:{seconds:00}";
 	}
-	
+
 	public override void _ExitTree()
 	{
 		GlobalHealth.Instance.HealthChanged -= OnHealthChanged;
@@ -41,9 +40,9 @@ public partial class GlobalHealthBarUI : Control
 		_bar.MaxValue = max;
 		_bar.Value = current;
 	}
-	
+
 	private void OnTimerTimeout()
 	{
-		GetTree().ChangeSceneToFile("res://Scenes/EndMenu.tscn");
+		GetTree().ChangeSceneToFile("res://Scenes/WinScreen.tscn");
 	}
 }
