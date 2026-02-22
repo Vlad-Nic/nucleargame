@@ -3,13 +3,14 @@
 [ext_resource type="Script" uid="uid://dvjcmt7u0pc0x" path="res://Scripts/GlobalHealthBarUI.cs" id="1_nkew5"]
 [ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_454ny"]
 
-[node name="GlobalHealthBar" type="Control" unique_id=95263201]
+[node name="GlobalHealthBar" type="Control" unique_id=95263201 node_paths=PackedStringArray("_timeRemaining")]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
 grow_horizontal = 2
 script = ExtResource("1_nkew5")
+_timeRemaining = NodePath("TimeRemaining")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=152252171]
 modulate = Color(0, 0.61960787, 0.21568628, 1)
@@ -41,7 +42,30 @@ theme_override_fonts/font = ExtResource("2_454ny")
 theme_override_font_sizes/font_size = 28
 text = "!REACTOR STABILITY!"
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1600352804]
-layout_mode = 0
-offset_right = 40.0
-offset_bottom = 40.0
+[node name="Label2" type="Label" parent="." unique_id=2100119984]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 316.0
+offset_top = 6.0
+offset_right = 512.0
+offset_bottom = 34.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_454ny")
+theme_override_font_sizes/font_size = 28
+text = "Time Remaining"
+
+[node name="TimeRemaining" type="Label" parent="." unique_id=2286313]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = 393.0
+offset_top = 40.0
+offset_right = 433.0
+offset_bottom = 63.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("2_454ny")
+theme_override_font_sizes/font_size = 30
+text = "2:00"

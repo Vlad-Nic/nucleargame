@@ -23,13 +23,6 @@ public partial class Game : Node3D
 		_defaultPosition = PlayerCam.Position;
 		_targetPosition = PlayerCam.Position;
 		_targetRotation = new Vector3(0,0,0);
-		var timer = GetNode<Timer>("FnafTimer");
-		timer.Timeout += OnTimerTimeout;
-	}
-	
-	private void OnTimerTimeout()
-	{
-		GetTree().ChangeSceneToFile("res://Scenes/EndMenu.tscn");
 	}
 	
 	public override void _Process(double delta)

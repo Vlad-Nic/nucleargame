@@ -141,7 +141,13 @@ transform = Transform3D(-2.4914408, 0, -2.4914403, 0, 3.523429, 0, 2.4914403, 0,
 
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1967219661]
 
-[node name="GlobalHealthBar" parent="HUD" unique_id=95263201 instance=ExtResource("6_eqev2")]
+[node name="FnafTimer" type="Timer" parent="HUD" unique_id=1415233633]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[node name="GlobalHealthBar" parent="HUD" unique_id=95263201 node_paths=PackedStringArray("timer") instance=ExtResource("6_eqev2")]
+timer = NodePath("../FnafTimer")
 
 [node name="Coffee" parent="." unique_id=390966558 instance=ExtResource("10_q6w4l")]
 transform = Transform3D(-0.037192088, 0, -0.14037946, 0, 0.14522274, 0, 0.14037946, 0, -0.037192088, -2.4845347, -3.7694979, 2.6105657)
@@ -167,8 +173,3 @@ transform = Transform3D(-0.11743164, 0, -0.06668605, 0, 0.13504528, 0, 0.0666860
 transform = Transform3D(-1.9038347e-07, -1.4896573, 4.0927997, 0, 4.092799, 1.4896573, -4.355466, 6.511498e-08, -1.7890194e-07, 0.07286072, 2.3351917, -0.0070648193)
 mesh = SubResource("QuadMesh_bj82y")
 skeleton = NodePath("../..")
-
-[node name="FnafTimer" type="Timer" parent="." unique_id=1415233633]
-wait_time = 10.0
-one_shot = true
-autostart = true
