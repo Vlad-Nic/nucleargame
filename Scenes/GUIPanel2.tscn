@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://bgb7hgp3harjp"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_k6ibj"]
-size = Vector2(3, 2)
+size = Vector2(1.8, 1.4)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_6hw7b"]
 viewport_path = NodePath("SubViewport")
