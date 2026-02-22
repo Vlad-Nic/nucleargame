@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://bgb7hgp3harjp"]
 
+[ext_resource type="Script" uid="uid://w85rea1rpram" path="res://Scripts/ButtonGui.cs" id="1_08etr"]
+[ext_resource type="PackedScene" uid="uid://f3xl62dkbtjr" path="res://MiniGames/ButtonMashGame.tscn" id="1_h4uxg"]
+
 [sub_resource type="QuadMesh" id="QuadMesh_k6ibj"]
 size = Vector2(1.8, 1.4)
 
@@ -13,14 +16,22 @@ shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_6hw7b")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_jfl88"]
-size = Vector3(3, 2, 0.1)
+size = Vector3(1.8, 1.4, 0.1)
 
-[node name="GuiPanel2" type="Node3D" unique_id=11216432]
+[node name="ButtonGUIPanel" type="Node3D" unique_id=11216432 node_paths=PackedStringArray("_area", "_subViewport", "_area", "_subViewport")]
+script = ExtResource("1_08etr")
+_area = NodePath("MeshInstance3D/Area3D")
+_subViewport = NodePath("SubViewport")
+_area = NodePath("MeshInstance3D/Area3D")
+_subViewport = NodePath("SubViewport")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=156196180]
+physics_object_picking = true
 gui_embed_subwindows = true
-size = Vector2i(560, 360)
+size = Vector2i(1152, 648)
 render_target_update_mode = 4
+
+[node name="ButtonMashGame" parent="SubViewport" unique_id=32019228 instance=ExtResource("1_h4uxg")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=601508946]
 mesh = SubResource("QuadMesh_k6ibj")

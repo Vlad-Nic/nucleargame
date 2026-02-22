@@ -1,6 +1,6 @@
 using Godot;
 using System;
-public partial class NumbleGui : GuiPanel
+public partial class ButtonGui : GuiPanel
 {
 	[Export] private Area3D _area;
 	[Export] private SubViewport _subViewport;

@@ -16,6 +16,7 @@ public partial class Game : Node3D
 	private Vector3 _targetRotation;
 	private Vector3 _targetPosition;
 	private Vector3 _defaultPosition;
+	private GuiPanel _focusedPanel = null;
 	
 	public override void _Ready()
 	{
@@ -51,20 +52,20 @@ public partial class Game : Node3D
 			if(_targetRotation.Y == -90)
 			{
 				_targetPosition = _zoomedPositionRight;
-				(_rightPanel as GuiPanel)?.OnFocused();
-				GD.Print("OnFocused called on the right panel.");
+				_focusedPanel = _rightPanel as GuiPanel;
+				_focusedPanel?.OnFocused();
 			}
 			else if(_targetRotation.Y == 90)
 			{
 				_targetPosition = _zoomedPositionLeft;
-				(_leftPanel as GuiPanel)?.OnFocused();
-				GD.Print("OnFocused called on the left panel.");
+				_focusedPanel = _leftPanel as GuiPanel;
+				_focusedPanel?.OnFocused();
 			}
 			else
 			{
 				_targetPosition = _zoomedPositionCenter;
-				(_centerPanel as GuiPanel)?.OnFocused();
-				GD.Print("OnFocused called on the middle panel.");
+				_focusedPanel = _centerPanel as GuiPanel;
+				_focusedPanel?.OnFocused();
 			}
 		}
 		
@@ -73,6 +74,8 @@ public partial class Game : Node3D
 			focusedOnMonitor = false;
 			_targetPosition = _defaultPosition;
 			Input.MouseMode = Input.MouseModeEnum.Captured;
+			_focusedPanel?.OnUnfocused();
+			_focusedPanel = null;
 		}
 	}
 }

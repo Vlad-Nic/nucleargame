@@ -1,4 +1,4 @@
-[gd_scene format=3 uid="uid://ckf47b2ahsc76"]
+[gd_scene format=3 uid="uid://wffaqenujq2w"]
 
 [ext_resource type="Script" uid="uid://d04nhaq5vye0b" path="res://Scripts/PauseMenu.cs" id="1_pause"]
 [ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_qwhev"]

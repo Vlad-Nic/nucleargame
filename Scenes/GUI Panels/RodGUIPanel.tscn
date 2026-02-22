@@ -1,5 +1,8 @@
 [gd_scene format=3 uid="uid://ibf22yok7sha"]
 
+[ext_resource type="Script" uid="uid://vrk6ytqbvbw6" path="res://Scripts/RodGui.cs" id="1_fbwr5"]
+[ext_resource type="PackedScene" uid="uid://c2s57g7gqcx4g" path="res://MiniGames/NuclearRods.tscn" id="1_q4sfg"]
+
 [sub_resource type="QuadMesh" id="QuadMesh_6jcne"]
 size = Vector2(1.8, 1.4)
 
@@ -13,14 +16,22 @@ shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_7i2gn")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_de17b"]
-size = Vector3(3, 2, 0.1)
+size = Vector3(1.8, 1.4, 0.1)
 
-[node name="GuiPanel3" type="Node3D" unique_id=386153917]
+[node name="GuiPanel3" type="Node3D" unique_id=386153917 node_paths=PackedStringArray("_area", "_subViewport", "_area", "_subViewport")]
+script = ExtResource("1_fbwr5")
+_area = NodePath("MeshInstance3D/Area3D")
+_subViewport = NodePath("SubViewport")
+_area = NodePath("MeshInstance3D/Area3D")
+_subViewport = NodePath("SubViewport")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=234421877]
+physics_object_picking = true
 gui_embed_subwindows = true
-size = Vector2i(560, 360)
+size = Vector2i(1152, 648)
 render_target_update_mode = 4
+
+[node name="NuclearRods" parent="SubViewport" unique_id=529923940 instance=ExtResource("1_q4sfg")]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=289819695]
 mesh = SubResource("QuadMesh_6jcne")

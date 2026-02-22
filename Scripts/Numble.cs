@@ -95,7 +95,7 @@ public partial class Numble : Control
 
 				var panel = new PanelContainer
 				{
-					CustomMinimumSize = new Vector2(30, 10)
+					CustomMinimumSize = new Vector2(50, 10)
 				};
 				panel.AddThemeStyleboxOverride("panel", style);
 
