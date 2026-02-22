@@ -2,27 +2,25 @@ using Godot;
 
 public partial class PauseMenu : CanvasLayer
 {
-	private Button _resumeButton    = null!;
-	private Button _restartButton   = null!;
-	private Button _mainMenuButton  = null!;
-	private Button _quitButton      = null!;
-
-	// Stores whatever mouse mode the game was using before pausing
+	private Button _resumeButton = null!;
+	private Button _restartButton = null!;
+	private Button _mainMenuButton = null!;
+	private Button _quitButton = null!;
 	private Input.MouseModeEnum _previousMouseMode;
 
 	public override void _Ready()
 	{
 		ProcessMode = ProcessModeEnum.Always;
 
-		_resumeButton   = GetNode<Button>("Panel/VBoxContainer/ResumeButton");
-		_restartButton  = GetNode<Button>("Panel/VBoxContainer/RestartButton");
+		_resumeButton = GetNode<Button>("Panel/VBoxContainer/ResumeButton");
+		_restartButton = GetNode<Button>("Panel/VBoxContainer/RestartButton");
 		_mainMenuButton = GetNode<Button>("Panel/VBoxContainer/MainMenuButton");
-		_quitButton     = GetNode<Button>("Panel/VBoxContainer/QuitButton");
+		_quitButton = GetNode<Button>("Panel/VBoxContainer/QuitButton");
 
-		_resumeButton.Pressed   += OnResume;
-		_restartButton.Pressed  += OnRestart;
+		_resumeButton.Pressed += OnResume;
+		_restartButton.Pressed += OnRestart;
 		_mainMenuButton.Pressed += OnMainMenu;
-		_quitButton.Pressed     += OnQuit;
+		_quitButton.Pressed += OnQuit;
 	}
 
 	public override void _Input(InputEvent evt)
@@ -34,12 +32,11 @@ public partial class PauseMenu : CanvasLayer
 	public void Toggle()
 	{
 		if (Visible) CloseMenu();
-		else         OpenMenu();
+		else OpenMenu();
 	}
 
 	public void OpenMenu()
 	{
-		// Save whatever mode the game is currently using so we can restore it
 		_previousMouseMode = Input.MouseMode;
 		Visible = true;
 		GetTree().Paused = true;
@@ -50,7 +47,6 @@ public partial class PauseMenu : CanvasLayer
 	{
 		Visible = false;
 		GetTree().Paused = false;
-		// Restore the mouse to whatever it was before the pause
 		Input.MouseMode = _previousMouseMode;
 	}
 
