@@ -1,0 +1,98 @@
+[gd_scene format=3 uid="uid://ckf47b2ahsc76"]
+
+[ext_resource type="Script" uid="uid://d04nhaq5vye0b" path="res://Scripts/PauseMenu.cs" id="1_pause"]
+[ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_qwhev"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
+bg_color = Color(0.02, 0.06, 0.02, 0.92)
+border_width_left = 2
+border_width_top = 2
+border_width_right = 2
+border_width_bottom = 2
+border_color = Color(0.2, 0.8, 0.2, 1)
+corner_radius_top_left = 4
+corner_radius_top_right = 4
+corner_radius_bottom_right = 4
+corner_radius_bottom_left = 4
+
+[node name="PauseMenu" type="CanvasLayer" unique_id=550000205]
+layer = 10
+visible = false
+script = ExtResource("1_pause")
+
+[node name="Overlay" type="ColorRect" parent="." unique_id=2103740593]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+color = Color(0, 0, 0, 0.5)
+
+[node name="Panel" type="PanelContainer" parent="." unique_id=2147324499]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -220.0
+offset_right = 200.0
+offset_bottom = 220.0
+theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=392047499]
+layout_mode = 2
+theme_override_constants/separation = 24
+
+[node name="TitleLabel" type="Label" parent="Panel/VBoxContainer" unique_id=73065284]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_qwhev")
+theme_override_font_sizes/font_size = 32
+text = "PAUSED"
+horizontal_alignment = 1
+
+[node name="Separator" type="HSeparator" parent="Panel/VBoxContainer" unique_id=1818313215]
+layout_mode = 2
+
+[node name="ResumeButton" type="Button" parent="Panel/VBoxContainer" unique_id=13355702]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.8, 1, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_qwhev")
+theme_override_font_sizes/font_size = 22
+text = "> RESUME"
+flat = true
+
+[node name="RestartButton" type="Button" parent="Panel/VBoxContainer" unique_id=479690874]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.8, 1, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_qwhev")
+theme_override_font_sizes/font_size = 22
+text = "> RESTART"
+flat = true
+
+[node name="MainMenuButton" type="Button" parent="Panel/VBoxContainer" unique_id=1086751111]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(0.8, 1, 0.8, 1)
+theme_override_fonts/font = ExtResource("2_qwhev")
+theme_override_font_sizes/font_size = 22
+text = "> MAIN MENU"
+flat = true
+
+[node name="QuitButton" type="Button" parent="Panel/VBoxContainer" unique_id=1873890130]
+custom_minimum_size = Vector2(0, 52)
+layout_mode = 2
+theme_override_colors/font_color = Color(0.8, 0.3, 0.3, 1)
+theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
+theme_override_colors/font_hover_color = Color(1, 0.5, 0.5, 1)
+theme_override_fonts/font = ExtResource("2_qwhev")
+theme_override_font_sizes/font_size = 22
+text = "> QUIT"
+flat = true
