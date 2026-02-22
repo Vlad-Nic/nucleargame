@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://t2tlop86col4" path="res://Scenes/GameFail.tscn" id="6_sfv3g"]
 [ext_resource type="AudioStream" uid="uid://d34sirh4u8boo" path="res://Audio/success.mp3" id="7_m4jsa"]
 [ext_resource type="AudioStream" uid="uid://b66pkjm723fj7" path="res://Audio/failure.mp3" id="8_lhixr"]
+[ext_resource type="AudioStream" uid="uid://c7lewr1o0m7un" path="res://Audio/alert.mp3" id="9_0lpcu"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_dv78n"]
 size = Vector2(1.8, 1.4)
@@ -51,8 +52,9 @@ _numble = NodePath("Numble")
 _gameComplete = NodePath("GameComplete")
 _gameFail = NodePath("GameFail")
 
-[node name="GameIdle" parent="SubViewport/MonitorScreen" unique_id=959119981 node_paths=PackedStringArray("_timer") instance=ExtResource("3_t6dpu")]
+[node name="GameIdle" parent="SubViewport/MonitorScreen" unique_id=959119981 node_paths=PackedStringArray("_alert", "_timer") instance=ExtResource("3_t6dpu")]
 layout_mode = 1
+_alert = NodePath("../../../Alert")
 _timer = NodePath("../Timer")
 
 [node name="Numble" parent="SubViewport/MonitorScreen" unique_id=1825611334 node_paths=PackedStringArray("_fail", "_success") instance=ExtResource("2_o5e6b")]
@@ -85,3 +87,7 @@ volume_db = -25.0
 [node name="Fail" type="AudioStreamPlayer3D" parent="." unique_id=1836475041]
 stream = ExtResource("8_lhixr")
 volume_db = -25.0
+
+[node name="Alert" type="AudioStreamPlayer3D" parent="." unique_id=1487647124]
+stream = ExtResource("9_0lpcu")
+volume_db = -15.0
