@@ -8,7 +8,13 @@
 [ext_resource type="PackedScene" uid="uid://bw3sgtwdw2gn8" path="res://Scenes/GlobalHealthBar.tscn" id="6_eqev2"]
 [ext_resource type="PackedScene" uid="uid://dk3t4gae56xeb" path="res://Assets/Table/scene.gltf" id="6_ghvq8"]
 [ext_resource type="PackedScene" uid="uid://b3h235l7yk87r" path="res://Assets/ControlRoom/scene.gltf" id="7_fuqhk"]
+[ext_resource type="PackedScene" uid="uid://mtadfopyc5li" path="res://Assets/Dinosaur/scene.gltf" id="8_gp3ee"]
 [ext_resource type="PackedScene" uid="uid://wffaqenujq2w" path="res://Scenes/PauseMenu.tscn" id="8_pause"]
+[ext_resource type="PackedScene" uid="uid://6pcbph4klkh5" path="res://Assets/Coffee/scene.gltf" id="10_q6w4l"]
+[ext_resource type="PackedScene" uid="uid://rt7xch3u8ry1" path="res://Assets/Stapler/scene.gltf" id="12_r0byk"]
+[ext_resource type="PackedScene" uid="uid://dhjsainhs7pbf" path="res://Assets/Lamp/scene.gltf" id="13_hmm1m"]
+[ext_resource type="PackedScene" uid="uid://cmqw15odl6h5h" path="res://Assets/Picture Frame/scene.gltf" id="14_xnkgk"]
+[ext_resource type="Texture2D" uid="uid://dsgt8x5n06cfd" path="res://Assets/Picture Frame/solaris.jpg" id="15_vl8r5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hqwdr"]
 size = Vector3(3.1802979, 2.247345, 3.3286133)
@@ -19,6 +25,12 @@ albedo_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_fuqhk"]
 material = SubResource("StandardMaterial3D_fuqhk")
 size = Vector3(50, 0.1, 50)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xy31k"]
+albedo_texture = ExtResource("15_vl8r5")
+
+[sub_resource type="QuadMesh" id="QuadMesh_bj82y"]
+material = SubResource("StandardMaterial3D_xy31k")
 
 [node name="Game" type="Node3D" unique_id=1059251469 node_paths=PackedStringArray("_centerPanel", "_leftPanel", "_rightPanel", "PlayerCam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
@@ -72,30 +84,25 @@ mesh = SubResource("BoxMesh_fuqhk")
 [node name="Lighting" type="Node3D" parent="." unique_id=710976207]
 
 [node name="SpotLight3D" type="SpotLight3D" parent="Lighting" unique_id=2125199907]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.9302838, 4.488449, 3.933811)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, -1.9302838, 4.488449, 5.933811)
 light_energy = 12.248
 light_volumetric_fog_energy = 0.634
 light_size = 0.23
 shadow_enabled = true
 
 [node name="SpotLight3D2" type="SpotLight3D" parent="Lighting" unique_id=113840963]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.22776675, 4.488449, 1.3198302)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0.22776675, 4.488449, 4.1013737)
 light_energy = 12.248
 light_volumetric_fog_energy = 0.634
 light_size = 0.23
 shadow_enabled = true
 
 [node name="SpotLight3D3" type="SpotLight3D" parent="Lighting" unique_id=1428292736]
-transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.0942578, 4.488449, 2.9730055)
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 2.0942578, 4.488449, 6.898592)
 light_energy = 12.248
 light_volumetric_fog_energy = 0.634
 light_size = 0.23
 shadow_enabled = true
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Lighting" unique_id=1438950273]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.647186, 2.44039)
-light_energy = 10.0
-light_size = 0.683
 
 [node name="OmniLight3D3" type="SpotLight3D" parent="Lighting" unique_id=1510481110]
 transform = Transform3D(0.14520428, 0.3995812, -0.90512466, -0.063293375, 0.9166978, 0.39453655, 0.98737514, 0, 0.15839928, 8.26042, 2.516276, 17.068102)
@@ -135,3 +142,28 @@ transform = Transform3D(-2.4914408, 0, -2.4914403, 0, 3.523429, 0, 2.4914403, 0,
 [node name="HUD" type="CanvasLayer" parent="." unique_id=1967219661]
 
 [node name="GlobalHealthBar" parent="HUD" unique_id=95263201 instance=ExtResource("6_eqev2")]
+
+[node name="Coffee" parent="." unique_id=390966558 instance=ExtResource("10_q6w4l")]
+transform = Transform3D(-0.037192088, 0, -0.14037946, 0, 0.14522274, 0, 0.14037946, 0, -0.037192088, -2.4845347, -3.7694979, 2.6105657)
+
+[node name="Stapler" parent="." unique_id=934025934 instance=ExtResource("12_r0byk")]
+transform = Transform3D(-0.15235032, 0, -0.15235032, 0, 0.21545589, 0, 0.15235032, 0, -0.15235032, -0.99646175, -0.07617283, 3.8756185)
+
+[node name="Lamp" parent="." unique_id=1143752306 instance=ExtResource("13_hmm1m")]
+transform = Transform3D(4.7735543, 0, -5.007123, 0, 6.9179554, 0, 5.007123, 0, 4.7735543, -2.0342584, -0.10593891, 3.0859356)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Lamp" unique_id=1465585768]
+transform = Transform3D(1, 0, 2.5771388e-07, 0, 1, 0, -2.5771388e-07, 0, 1, 0.06920065, 0.15215155, -0.0070561767)
+light_color = Color(1, 1, 0.69803923, 1)
+light_energy = 2.0
+
+[node name="Dinosaur" parent="." unique_id=39409955 instance=ExtResource("8_gp3ee")]
+transform = Transform3D(-0.15981904, 0, 0.21283576, 0, 0.26616004, 0, -0.21283576, 0, -0.15981904, -2.1616387, -0.10691118, 7.4747357)
+
+[node name="PictureFrame" parent="." unique_id=760930063 instance=ExtResource("14_xnkgk")]
+transform = Transform3D(-0.11743164, 0, -0.06668605, 0, 0.13504528, 0, 0.06668605, 0, -0.11743164, 2.7815974, -0.10856485, 4.6128554)
+
+[node name="SolarisPhoto" type="MeshInstance3D" parent="PictureFrame" unique_id=1424868808]
+transform = Transform3D(-1.9038347e-07, -1.4896573, 4.0927997, 0, 4.092799, 1.4896573, -4.355466, 6.511498e-08, -1.7890194e-07, 0.07286072, 2.3351917, -0.0070648193)
+mesh = SubResource("QuadMesh_bj82y")
+skeleton = NodePath("../..")
