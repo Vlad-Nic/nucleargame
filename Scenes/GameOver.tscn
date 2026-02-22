@@ -20,19 +20,6 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 1)
 
-[node name="Control" type="Control" parent="." unique_id=1386633860]
-layout_direction = 4
-anchors_preset = 0
-offset_left = 1672.0
-offset_top = 649.0
-offset_right = 1704.0
-offset_bottom = 689.0
-
-[node name="Nuclear" type="Sprite2D" parent="Control" unique_id=2145446661]
-position = Vector2(-266, -139)
-scale = Vector2(0.8, 0.8)
-texture = ExtResource("2_nuke")
-
 [node name="TextLabel" type="Label" parent="." unique_id=2099901136]
 layout_mode = 0
 offset_left = 80.0
@@ -68,6 +55,19 @@ THANK YOU FOR WORKING WITH US.
 [node name="CharTimer" type="Timer" parent="." unique_id=795702693]
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1175673179]
+
+[node name="Control" type="Control" parent="." unique_id=1386633860]
+layout_direction = 4
+anchors_preset = 0
+offset_left = 1672.0
+offset_top = 649.0
+offset_right = 1704.0
+offset_bottom = 689.0
+
+[node name="Nuclear" type="Sprite2D" parent="Control" unique_id=2145446661]
+position = Vector2(-266, -139)
+scale = Vector2(0.8, 0.8)
+texture = ExtResource("2_nuke")
 
 [node name="Control2" type="Control" parent="." unique_id=728830153]
 anchors_preset = 0

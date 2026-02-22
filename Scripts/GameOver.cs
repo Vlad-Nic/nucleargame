@@ -20,7 +20,7 @@ public partial class GameOver : Control
 		_fullText = GetNode<TextEdit>("GameOverText").Text.Trim();
 		_textLabel.Text = "";
 
-		_charTimer.WaitTime = 0.074;
+		_charTimer.WaitTime = 0.06;
 		_charTimer.OneShot = false;
 		_charTimer.Timeout += OnCharTick;
 		_charTimer.Start();
@@ -34,12 +34,10 @@ public partial class GameOver : Control
 
 	public override void _Input(InputEvent evt)
 	{
-		if (!_done) return;
-
 		if (evt is InputEventKey key && key.Pressed && !key.Echo)
-			GoToMainMenu();
+			GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");
 		else if (evt is InputEventMouseButton mb && mb.Pressed)
-			GoToMainMenu();
+			GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");
 	}
 
 	private void OnCharTick()
