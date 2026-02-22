@@ -4,6 +4,8 @@ using System.Collections.Generic;
 
 public partial class NuclearRods : Control
 {
+	[Export] public float GlobalHealthPenalty = 5f; //how much the global health will lose on fail
+	
 	//Constants
 	private const int   RodCount  = 5;
 	private const int   TimeLimit = 30;
@@ -290,11 +292,13 @@ public partial class NuclearRods : Control
 		{
 			_messageLabel.Text = "Meltdown! Time ran out!";
 			_messageLabel.AddThemeColorOverride("font_color", new Color(1f, 0.3f, 0.2f));
+			GlobalHealth.Instance.Drain(GlobalHealthPenalty);
 		}
 		else
 		{
 			_messageLabel.Text = "Wrong slot! Reactor breach!";
 			_messageLabel.AddThemeColorOverride("font_color", new Color(1f, 0.3f, 0.2f));
+			GlobalHealth.Instance.Drain(GlobalHealthPenalty);
 		}
 	}
 

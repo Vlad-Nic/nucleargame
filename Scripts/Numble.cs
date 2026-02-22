@@ -4,9 +4,10 @@ using System.Linq;
 
 public partial class Numble : Control
 {
+	[Export] public float GlobalHealthPenalty = 5f; //how much the global health will lose on fail
+	
 	[Export] public Font font { get; set; } = null!;
 
-	[Export] private Label _failLabel;
 	[Export] private Label _timerLabel = null!;
 	[Export] private Label _messageLabel = null!;
 	[Export] private GridContainer _guessGrid = null!;
@@ -38,7 +39,6 @@ public partial class Numble : Control
 
 	public override void _Ready()
 	{
-		_failLabel.Visible = false;
 		_inputSlots = new LineEdit[] { _slot0, _slot1, _slot2, _slot3 };
 
 		for (int i = 0; i < Slots; i++)
@@ -185,7 +185,7 @@ public partial class Numble : Control
 		}
 		else if (_guessCount >= MaxGuesses)
 		{
-			EndGame(false, $"No guesses left! Secret was: {SecretString()}");
+			EndGame(false, $"No guesses left! Code was: {SecretString()}");
 		}
 		else
 		{
@@ -230,9 +230,9 @@ public partial class Numble : Control
 		}
 		else
 		{
-			//_failLabel.Text = "TASK FAILED\nINTEGRITY DROPPING";
-			//_failLabel.AddThemeColorOverride("font_color", new Color(1f, 0.2f, 0.2f));
-			//_failLabel.Visible = true;
+			_messageLabel.Text = message;
+			_messageLabel.Visible = true;
+			GlobalHealth.Instance.Drain(GlobalHealthPenalty);
 		}
 
 		_gameOver = true;
