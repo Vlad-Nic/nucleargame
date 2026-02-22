@@ -3,6 +3,8 @@ using System;
 
 public partial class Game : Node3D
 {
+	[Export] public AudioStreamPlayer3D _hum;
+	[Export] public AudioStreamPlayer3D _chairSwivel;
 	[Export] public Node3D _centerPanel;
 	[Export] public Node3D _leftPanel;
 	[Export] public Node3D _rightPanel;
@@ -23,6 +25,7 @@ public partial class Game : Node3D
 		_defaultPosition = PlayerCam.Position;
 		_targetPosition = PlayerCam.Position;
 		_targetRotation = new Vector3(0,0,0);
+		_hum.Play();
 	}
 	
 	public override void _Process(double delta)
@@ -36,10 +39,13 @@ public partial class Game : Node3D
 			if(Input.IsActionJustPressed("Right"))
 			{
 				_targetRotation += new Vector3(0,-90,0);
+				_chairSwivel.Play();
+				
 			}
 			else if(Input.IsActionJustPressed("Left"))
 			{
 				_targetRotation += new Vector3(0,90,0);
+				_chairSwivel.Play();
 			}
 		}
 

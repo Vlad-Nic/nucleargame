@@ -1,6 +1,7 @@
-[gd_scene format=3 uid="uid://bvylrryec7jvb"]
+[gd_scene format=3 uid="uid://mdiqm4d64x6m"]
 
-[ext_resource type="Script" uid="uid://bt67wtk1k1xwd" path="res://Scripts/MainMenu.cs" id="1_menu"]
+[ext_resource type="Script" path="res://Scripts/MainMenu.cs" id="1_menu"]
+[ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_853f1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.02, 0.06, 0.02, 0.92)
@@ -48,14 +49,16 @@ theme_override_constants/separation = 20
 [node name="TitleLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1600207038]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
-theme_override_font_sizes/font_size = 38
+theme_override_fonts/font = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 50
 text = "MANUAL"
 horizontal_alignment = 1
 
 [node name="TitleLabel2" type="Label" parent="Panel/VBoxContainer" unique_id=1943319235]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
-theme_override_font_sizes/font_size = 38
+theme_override_fonts/font = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 50
 text = "MELTDOWN"
 horizontal_alignment = 1
 
@@ -65,7 +68,8 @@ layout_mode = 2
 [node name="SubtitleLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1223642386]
 layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 0.8, 0.4, 1)
-theme_override_font_sizes/font_size = 13
+theme_override_fonts/font = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 20
 text = "REACTOR CONTROL SIMULATION"
 horizontal_alignment = 1
 
@@ -78,7 +82,8 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(0.8, 1, 0.8, 1)
-theme_override_font_sizes/font_size = 22
+theme_override_fonts/font = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 30
 text = "> PLAY"
 flat = true
 
@@ -88,6 +93,7 @@ layout_mode = 2
 theme_override_colors/font_color = Color(0.8, 0.3, 0.3, 1)
 theme_override_colors/font_pressed_color = Color(1, 1, 1, 1)
 theme_override_colors/font_hover_color = Color(1, 0.5, 0.5, 1)
-theme_override_font_sizes/font_size = 22
+theme_override_fonts/font = ExtResource("2_853f1")
+theme_override_font_sizes/font_size = 30
 text = "> QUIT"
 flat = true

@@ -15,6 +15,8 @@
 [ext_resource type="PackedScene" uid="uid://dhjsainhs7pbf" path="res://Assets/Lamp/scene.gltf" id="13_hmm1m"]
 [ext_resource type="PackedScene" uid="uid://cmqw15odl6h5h" path="res://Assets/Picture Frame/scene.gltf" id="14_xnkgk"]
 [ext_resource type="Texture2D" uid="uid://dsgt8x5n06cfd" path="res://Assets/Picture Frame/solaris.jpg" id="15_vl8r5"]
+[ext_resource type="AudioStream" uid="uid://cmyfj6l16up3g" path="res://Audio/chair.mp3" id="16_xy31k"]
+[ext_resource type="AudioStream" uid="uid://d2nlxqrs0is0r" path="res://Audio/hum.mp3" id="17_bj82y"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hqwdr"]
 size = Vector3(3.1802979, 2.247345, 3.3286133)
@@ -32,9 +34,11 @@ albedo_texture = ExtResource("15_vl8r5")
 [sub_resource type="QuadMesh" id="QuadMesh_bj82y"]
 material = SubResource("StandardMaterial3D_xy31k")
 
-[node name="Game" type="Node3D" unique_id=1059251469 node_paths=PackedStringArray("_centerPanel", "_leftPanel", "_rightPanel", "PlayerCam")]
+[node name="Game" type="Node3D" unique_id=1059251469 node_paths=PackedStringArray("_hum", "_chairSwivel", "_centerPanel", "_leftPanel", "_rightPanel", "PlayerCam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("1_iv3md")
+_hum = NodePath("Hum")
+_chairSwivel = NodePath("ChairSwivel")
 _centerPanel = NodePath("ButtonMashGuiPanel")
 _leftPanel = NodePath("NumbleGuiPanel")
 _rightPanel = NodePath("RodGuiPanel")
@@ -173,3 +177,13 @@ transform = Transform3D(-0.11743164, 0, -0.06668605, 0, 0.13504528, 0, 0.0666860
 transform = Transform3D(-1.9038347e-07, -1.4896573, 4.0927997, 0, 4.092799, 1.4896573, -4.355466, 6.511498e-08, -1.7890194e-07, 0.07286072, 2.3351917, -0.0070648193)
 mesh = SubResource("QuadMesh_bj82y")
 skeleton = NodePath("../..")
+
+[node name="ChairSwivel" type="AudioStreamPlayer3D" parent="." unique_id=1265928298]
+stream = ExtResource("16_xy31k")
+volume_db = -10.0
+pitch_scale = 0.7
+
+[node name="Hum" type="AudioStreamPlayer3D" parent="." unique_id=1473347627]
+stream = ExtResource("17_bj82y")
+volume_db = -20.0
+pitch_scale = 0.7
