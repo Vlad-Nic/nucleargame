@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://ki203i0hh6e8" path="res://Scripts/Numble.cs" id="1_uxgpr"]
 [ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_twrq0"]
 
-[node name="Numble" type="Control" unique_id=1825611334 node_paths=PackedStringArray("_failLabel", "_timerLabel", "_messageLabel", "_guessGrid", "_submitButton", "_gameTimer", "_slot0", "_slot1", "_slot2", "_slot3")]
+[node name="Numble" type="Control" unique_id=1825611334 node_paths=PackedStringArray("_timerLabel", "_messageLabel", "_guessGrid", "_submitButton", "_gameTimer", "_slot0", "_slot1", "_slot2", "_slot3")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -12,7 +12,6 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_uxgpr")
 font = ExtResource("2_twrq0")
-_failLabel = NodePath("FailLabel")
 _timerLabel = NodePath("VBoxContainer/TimerLabel")
 _messageLabel = NodePath("VBoxContainer/MessageLabel")
 _guessGrid = NodePath("VBoxContainer/GuessGrid")
@@ -22,25 +21,6 @@ _slot0 = NodePath("VBoxContainer/HBoxContainer/Slot0")
 _slot1 = NodePath("VBoxContainer/HBoxContainer/Slot1")
 _slot2 = NodePath("VBoxContainer/HBoxContainer/Slot2")
 _slot3 = NodePath("VBoxContainer/HBoxContainer/Slot3")
-
-[node name="FailLabel" type="Label" parent="." unique_id=261833787]
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -422.0
-offset_top = -286.0
-offset_right = 393.0
-offset_bottom = 275.0
-grow_horizontal = 2
-grow_vertical = 2
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_fonts/font = ExtResource("2_twrq0")
-text = "asdasdasdwasdawsd"
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [node name="Background" type="ColorRect" parent="." unique_id=358803789]
 layout_mode = 1

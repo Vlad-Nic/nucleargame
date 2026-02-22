@@ -2,6 +2,8 @@
 
 [ext_resource type="Script" uid="uid://c0u8wj1qhyt1j" path="res://Scripts/NumbleGui.cs" id="1_o5e6b"]
 [ext_resource type="PackedScene" uid="uid://bgcayy35nber" path="res://MiniGames/Numble.tscn" id="2_o5e6b"]
+[ext_resource type="Script" uid="uid://ctvm28owwwr84" path="res://Scripts/MonitorScreen.cs" id="2_s2rjy"]
+[ext_resource type="PackedScene" uid="uid://mfg37dlbrxk8" path="res://Scenes/GameIdle.tscn" id="3_t6dpu"]
 
 [sub_resource type="QuadMesh" id="QuadMesh_dv78n"]
 size = Vector2(1.8, 1.4)
@@ -32,7 +34,25 @@ gui_embed_subwindows = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="Numble" parent="SubViewport" unique_id=1825611334 instance=ExtResource("2_o5e6b")]
+[node name="MonitorScreen" type="Control" parent="SubViewport" unique_id=279290618 node_paths=PackedStringArray("_gameIdle", "_numble")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_s2rjy")
+_gameIdle = NodePath("GameIdle")
+_numble = NodePath("Numble")
+
+[node name="GameIdle" parent="SubViewport/MonitorScreen" unique_id=959119981 node_paths=PackedStringArray("_timer") instance=ExtResource("3_t6dpu")]
+layout_mode = 1
+_timer = NodePath("../Timer")
+
+[node name="Numble" parent="SubViewport/MonitorScreen" unique_id=1825611334 instance=ExtResource("2_o5e6b")]
+layout_mode = 1
+
+[node name="Timer" type="Timer" parent="SubViewport/MonitorScreen" unique_id=2025781510]
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1865164255]
 mesh = SubResource("QuadMesh_dv78n")
