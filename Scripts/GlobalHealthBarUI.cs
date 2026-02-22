@@ -13,6 +13,11 @@ public partial class GlobalHealthBarUI : Control
 
 		OnHealthChanged(GlobalHealth.Instance.CurrentHealth,GlobalHealth.Instance.MaxHealth);
 	}
+	
+	public override void _ExitTree()
+	{
+		GlobalHealth.Instance.HealthChanged -= OnHealthChanged;
+	}
 
 	private void OnHealthChanged(float current, float max)
 	{

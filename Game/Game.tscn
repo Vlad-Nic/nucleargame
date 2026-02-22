@@ -20,9 +20,12 @@ albedo_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
 material = SubResource("StandardMaterial3D_fuqhk")
 size = Vector3(50, 0.1, 50)
 
-[node name="Game" type="Node3D" unique_id=1059251469 node_paths=PackedStringArray("PlayerCam")]
+[node name="Game" type="Node3D" unique_id=1059251469 node_paths=PackedStringArray("_centerPanel", "_leftPanel", "_rightPanel", "PlayerCam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("1_iv3md")
+_centerPanel = NodePath("ButtonMashGuiPanel")
+_leftPanel = NodePath("NumbleGuiPanel")
+_rightPanel = NodePath("RodGuiPanel")
 PlayerCam = NodePath("Camera3D")
 _zoomedPositionRight = Vector3(1.8, 1.246, 6.187)
 
