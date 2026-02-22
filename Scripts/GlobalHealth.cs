@@ -43,6 +43,6 @@ public partial class GlobalHealth : Node
 	{
 		GD.Print("Global health is empty");
 		SetProcess(false); //stop multiple triggers
-		GetTree().ChangeSceneToFile("res://GameOver.tscn");
+		//GetTree().ChangeSceneToFile("res://GameOver.tscn");
 	}
 }
