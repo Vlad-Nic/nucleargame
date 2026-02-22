@@ -11,17 +11,6 @@ anchor_right = 0.5
 grow_horizontal = 2
 script = ExtResource("1_nkew5")
 
-[node name="ColorRect" type="ColorRect" parent="." unique_id=1488834013]
-layout_mode = 1
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -320.5
-offset_right = 320.5
-offset_bottom = 81.0
-grow_horizontal = 2
-color = Color(0.101960786, 0.101960786, 0.12941177, 1)
-
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=152252171]
 modulate = Color(0, 0.61960787, 0.21568628, 1)
 layout_mode = 1

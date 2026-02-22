@@ -4,7 +4,9 @@ using System.Linq;
 
 public partial class Numble : Control
 {
-	[Export] public float GlobalHealthPenalty = 5f; //how much the global health will lose on fail
+	[Signal] public delegate void GameWonEventHandler();
+	[Signal] public delegate void GameLostEventHandler();
+	[Export] public float GlobalHealthPenalty = 15f; //how much the global health will lose on fail
 	
 	[Export] public Font font { get; set; } = null!;
 
@@ -51,10 +53,21 @@ public partial class Numble : Control
 		_submitButton.Pressed += OnSubmit;
 
 		_gameTimer.WaitTime = 1.0;
-		_gameTimer.OneShot = false;
-		_gameTimer.Timeout += OnTick;
+		_gameTimer.OneShot  = false;
+		_gameTimer.Timeout  += OnTick;
 
 		BuildGrid();
+	}
+
+	public override void _Notification(int what)
+	{
+		if (what == NotificationVisibilityChanged && Visible)
+			CallDeferred(nameof(StartGameSafe));
+	}
+
+	private void StartGameSafe()
+	{
+		if (!IsInsideTree()) return;
 		NewGame();
 	}
 
@@ -80,7 +93,7 @@ public partial class Numble : Control
 
 				var panel = new PanelContainer
 				{
-					CustomMinimumSize = new Vector2(50, 10)
+					CustomMinimumSize = new Vector2(100, 60)
 				};
 				panel.AddThemeStyleboxOverride("panel", style);
 
@@ -238,6 +251,14 @@ public partial class Numble : Control
 		_gameOver = true;
 		_gameTimer.Stop();
 		SetInputEnabled(false);
+		if (won)
+		{
+			EmitSignal(SignalName.GameWon);
+		}	
+		else
+		{
+			EmitSignal(SignalName.GameLost);
+		}
 	}
 
 	private void SetCell(int row, int col, string text, Color bg)

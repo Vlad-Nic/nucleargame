@@ -14,7 +14,28 @@ public partial class GameIdle : Control
 		_timer.WaitTime = 10f;
 		_timer.Timeout += OnTimerTimeout;
 		_authorizeButton.Pressed += OnAuthorizePressed;
-		_timer.Start();
+
+		VisibilityChanged += OnVisibilityChanged;
+
+		if (Visible)
+			CallDeferred(nameof(StartTimerSafe));
+	}
+
+	private void OnVisibilityChanged()
+	{
+		if (!Visible)
+		{
+			_timer.Stop();
+			return;
+		}
+
+		StartTimerSafe();
+	}
+
+	private void StartTimerSafe()
+	{
+		if (_timer.IsInsideTree())
+			_timer.Start();
 	}
 
 	public override void _Process(double delta)

@@ -4,7 +4,9 @@ using System.Collections.Generic;
 
 public partial class NuclearRods : Control
 {
-	[Export] public float GlobalHealthPenalty = 5f; //how much the global health will lose on fail
+	[Signal] public delegate void GameWonEventHandler();
+	[Signal] public delegate void GameLostEventHandler();
+	[Export] public float GlobalHealthPenalty = 10f; //how much the global health will lose on fail
 	
 	//Constants
 	private const int   RodCount  = 5;
@@ -64,17 +66,25 @@ public partial class NuclearRods : Control
 	private bool _gameOver  = false;
 	private int  _placed    = 0;
 
-	//Lifecycle
 	public override void _Ready()
 	{
-		_gameTimer.Timeout     += OnTick;
-		_gameTimer.WaitTime     = 1.0;
-		_gameTimer.OneShot      = false;
+		_gameTimer.Timeout  += OnTick;
+		_gameTimer.WaitTime  = 1.0;
+		_gameTimer.OneShot   = false;
+	}
 
+	public override void _Notification(int what)
+	{
+		if (what == NotificationVisibilityChanged && Visible)
+			CallDeferred(nameof(StartGameSafe));
+	}
+
+	private void StartGameSafe()
+	{
+		if (!IsInsideTree()) return;
 		StartGame();
 	}
 
-	//Build/reset
 	private void StartGame()
 	{
 		_gameOver = false;
@@ -287,18 +297,21 @@ public partial class NuclearRods : Control
 		{
 			_messageLabel.Text = "All rods stored safely!";
 			_messageLabel.AddThemeColorOverride("font_color", new Color(0.2f, 1f, 0.3f));
+			EmitSignal(SignalName.GameWon);
 		}
 		else if (_timeLeft <= 0)
 		{
 			_messageLabel.Text = "Meltdown! Time ran out!";
 			_messageLabel.AddThemeColorOverride("font_color", new Color(1f, 0.3f, 0.2f));
 			GlobalHealth.Instance.Drain(GlobalHealthPenalty);
+			EmitSignal(SignalName.GameLost);
 		}
 		else
 		{
 			_messageLabel.Text = "Wrong slot! Reactor breach!";
 			_messageLabel.AddThemeColorOverride("font_color", new Color(1f, 0.3f, 0.2f));
 			GlobalHealth.Instance.Drain(GlobalHealthPenalty);
+			EmitSignal(SignalName.GameLost);
 		}
 	}
 
