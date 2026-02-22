@@ -18,6 +18,10 @@ config/name="NuclearGame"
 config/features=PackedStringArray("4.6", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+GlobalHealth="*uid://bnwnjdqffhcgd"
+
 [dotnet]
 
 project/assembly_name="NuclearGame"

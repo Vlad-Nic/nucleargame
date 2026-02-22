@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://bw3sgtwdw2gn8"]
+
+[ext_resource type="Script" uid="uid://dvjcmt7u0pc0x" path="res://Scripts/GlobalHealthBarUI.cs" id="1_nkew5"]
+
+[node name="GlobalHealthBar" type="Control" unique_id=86176004]
+layout_mode = 3
+anchors_preset = 0
+script = ExtResource("1_nkew5")
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=152252171]
+layout_mode = 0
+offset_left = 195.0
+offset_top = 11.0
+offset_right = 904.0
+offset_bottom = 41.0
+value = 100.0
