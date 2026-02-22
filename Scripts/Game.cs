@@ -25,6 +25,8 @@ public partial class Game : Node3D
 		_targetRotation = new Vector3(0,0,0);
 	}
 	
+	
+	
 	public override void _Process(double delta)
 	{
 		_targetRotation.Y = Mathf.Clamp(_targetRotation.Y, -90, 90);
@@ -78,4 +80,5 @@ public partial class Game : Node3D
 			_focusedPanel = null;
 		}
 	}
+	
 }
