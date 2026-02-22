@@ -13,7 +13,7 @@ public partial class GlobalHealthBarUI : Control
 		GlobalHealth.Instance.HealthChanged += OnHealthChanged;
 		OnHealthChanged(GlobalHealth.Instance.CurrentHealth, GlobalHealth.Instance.MaxHealth);
 
-		timer.WaitTime = 10f;
+		timer.WaitTime = 240f;
 		timer.Timeout += OnTimerTimeout;
 		timer.Start();
 	}
