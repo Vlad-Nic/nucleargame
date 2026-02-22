@@ -2,8 +2,8 @@
 
 [ext_resource type="PackedScene" uid="uid://gcffo5xrgpoa" path="res://Assets/Computer/scene.gltf" id="1_hqwdr"]
 [ext_resource type="Script" uid="uid://baie3sjxaxa4n" path="res://Scripts/Game.cs" id="1_iv3md"]
-[ext_resource type="PackedScene" uid="uid://bo4ut652ljvef" path="res://Scenes/GUIPanel.tscn" id="2_vrr3t"]
-[ext_resource type="PackedScene" path="res://Scenes/GUIPanel2.tscn" id="4_jxerj"]
+[ext_resource type="PackedScene" uid="uid://bo4ut652ljvef" path="res://Scenes/NumbleGUIPanel.tscn" id="2_vrr3t"]
+[ext_resource type="PackedScene" uid="uid://bgb7hgp3harjp" path="res://Scenes/GUIPanel2.tscn" id="4_jxerj"]
 [ext_resource type="PackedScene" uid="uid://ibf22yok7sha" path="res://Scenes/GUIPanel3.tscn" id="5_ghvq8"]
 [ext_resource type="PackedScene" uid="uid://dk3t4gae56xeb" path="res://Assets/Table/scene.gltf" id="6_ghvq8"]
 [ext_resource type="PackedScene" uid="uid://b3h235l7yk87r" path="res://Assets/ControlRoom/scene.gltf" id="7_fuqhk"]
@@ -18,9 +18,12 @@ albedo_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
 material = SubResource("StandardMaterial3D_fuqhk")
 size = Vector3(50, 0.1, 50)
 
-[node name="Game" type="Node3D" unique_id=1059251469 node_paths=PackedStringArray("PlayerCam")]
+[node name="Game" type="Node3D" unique_id=1059251469 node_paths=PackedStringArray("_centerPanel", "_leftPanel", "_rightPanel", "PlayerCam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("1_iv3md")
+_centerPanel = NodePath("ButtonMashGuiPanel")
+_leftPanel = NodePath("NumbleGuiPanel")
+_rightPanel = NodePath("RodGuiPanel")
 PlayerCam = NodePath("Camera3D")
 _zoomedPositionRight = Vector3(1.8, 1.246, 6.187)
 
@@ -33,7 +36,7 @@ visible = false
 shape = SubResource("BoxShape3D_hqwdr")
 
 [node name="NumbleGuiPanel" parent="." unique_id=1209827852 instance=ExtResource("2_vrr3t")]
-transform = Transform3D(-2.4918586e-08, 0, 0.65999997, 0, 0.65277004, 0, -0.5700708, 0, -2.8849515e-08, -2.4448452, 1.2559042, 6.339509)
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.4448452, 1.2559042, 6.339509)
 
 [node name="Computer2" parent="." unique_id=1212618555 instance=ExtResource("1_hqwdr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1480422, 0, 6.3189054)
@@ -44,7 +47,7 @@ visible = false
 shape = SubResource("BoxShape3D_hqwdr")
 
 [node name="ButtonMashGuiPanel" parent="." unique_id=11216432 instance=ExtResource("4_jxerj")]
-transform = Transform3D(0.65, 0, 0, 0, 0.65, 0, 0, 0, 0.65, 0.0711987, 1.2340002, 3.5291374)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0711987, 1.2340002, 3.5291374)
 
 [node name="Computer3" parent="." unique_id=1791822737 instance=ExtResource("1_hqwdr")]
 transform = Transform3D(-1, 0, -1.1920929e-07, 0, 1, 0, 1.1920929e-07, 0, -1, 2.520432, 0, 6.177148)
@@ -55,7 +58,7 @@ visible = false
 shape = SubResource("BoxShape3D_hqwdr")
 
 [node name="RodGuiPanel" parent="." unique_id=386153917 instance=ExtResource("5_ghvq8")]
-transform = Transform3D(-2.8412401e-08, 0, -0.65, 0, 0.65, 0, 0.65, 0, -2.8412401e-08, 2.8031025, 1.2458124, 6.1784267)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, 2.8031025, 1.2458124, 6.1784267)
 
 [node name="Camera3D" type="Camera3D" parent="." unique_id=951513297]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.18407023, 0.9643934, 6.152226)

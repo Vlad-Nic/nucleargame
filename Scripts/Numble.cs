@@ -8,11 +8,11 @@ public partial class Numble : Control
 	[Export] public Font font { get; set; } = null!;
 	
 	//Node refs — names match your scene exactly
+	[Export] private Label _failLabel;
 	[Export] private Label         _timerLabel   = null!;
 	[Export] private Label         _messageLabel = null!;
 	[Export] private GridContainer _guessGrid    = null!;
 	[Export] private Button        _submitButton = null!;
-	[Export] private Button        _newGameButton= null!;
 	[Export] private Timer         _gameTimer    = null!;
 	[Export] private LineEdit _slot0 = null!;
 	[Export] private LineEdit _slot1 = null!;
@@ -24,7 +24,7 @@ public partial class Numble : Control
 	
 	//Constants
 	private const int Slots      = 4;
-	private const int MaxGuesses = 6;
+	private const int MaxGuesses = 5;
 	private const int TimeLimit  = 60;
 	
 
@@ -50,6 +50,7 @@ public partial class Numble : Control
 	
 	public override void _Ready()
 	{
+		_failLabel.Visible = false;
 		_inputSlots = new LineEdit[] { _slot0, _slot1, _slot2, _slot3 };
 		
 		// Slots are assigned via export, just wire up the events
@@ -61,7 +62,6 @@ public partial class Numble : Control
 		}
 
 		_submitButton.Pressed  += OnSubmit;
-		_newGameButton.Pressed += NewGame;
 
 		_gameTimer.WaitTime = 1.0;
 		_gameTimer.OneShot  = false;
@@ -95,7 +95,7 @@ public partial class Numble : Control
 
 				var panel = new PanelContainer
 				{
-					CustomMinimumSize = new Vector2(74, 74)
+					CustomMinimumSize = new Vector2(30, 10)
 				};
 				panel.AddThemeStyleboxOverride("panel", style);
 
@@ -240,15 +240,24 @@ public partial class Numble : Control
 		}
 	}
 
-	//End game 
 	private void EndGame(bool won, string message)
 	{
+		if (won)
+		{
+			_messageLabel.Text = message;
+			_messageLabel.AddThemeColorOverride("font_color", new Color(0.2f, 1f, 0.4f));
+			_messageLabel.Visible = true;
+		}
+		else
+		{
+			//_failLabel.Text = "TASK FAILED\nINTEGRITY DROPPING";
+			//_failLabel.AddThemeColorOverride("font_color", new Color(1f, 0.2f, 0.2f));
+			//_failLabel.Visible = true;
+		}
+
 		_gameOver = true;
 		_gameTimer.Stop();
 		SetInputEnabled(false);
-		_messageLabel.Text = message;
-
-		
 	}
 
 	// Helpers 
