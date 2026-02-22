@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0u8wj1qhyt1j" path="res://Scripts/NumbleGui.cs" id="1_o5e6b"]
 [ext_resource type="PackedScene" uid="uid://bgcayy35nber" path="res://MiniGames/Numble.tscn" id="2_o5e6b"]
-[ext_resource type="Script" uid="uid://ctvm28owwwr84" path="res://Scripts/MonitorScreenNumble.cs" id="2_s2rjy"]
+[ext_resource type="Script" path="res://Scripts/MonitorScreenNumble.cs" id="2_sfv3g"]
 [ext_resource type="PackedScene" uid="uid://mfg37dlbrxk8" path="res://Scenes/GameIdle.tscn" id="3_t6dpu"]
 [ext_resource type="PackedScene" uid="uid://bldhud5ggsjnf" path="res://Scenes/GameComplete.tscn" id="5_3s4qe"]
 [ext_resource type="PackedScene" uid="uid://t2tlop86col4" path="res://Scenes/GameFail.tscn" id="6_sfv3g"]
@@ -43,7 +43,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("2_s2rjy")
+script = ExtResource("2_sfv3g")
 _gameStateIdle = NodePath("GameIdle")
 _numble = NodePath("Numble")
 _gameComplete = NodePath("GameComplete")
