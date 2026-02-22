@@ -1,16 +1,38 @@
 [gd_scene format=3 uid="uid://bw3sgtwdw2gn8"]
 
 [ext_resource type="Script" uid="uid://dvjcmt7u0pc0x" path="res://Scripts/GlobalHealthBarUI.cs" id="1_nkew5"]
+[ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_454ny"]
 
 [node name="GlobalHealthBar" type="Control" unique_id=86176004]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_nkew5")
 
-[node name="ProgressBar" type="ProgressBar" parent="." unique_id=152252171]
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1488834013]
 layout_mode = 0
-offset_left = 195.0
-offset_top = 11.0
-offset_right = 904.0
-offset_bottom = 41.0
+offset_left = 237.0
+offset_right = 878.0
+offset_bottom = 81.0
+color = Color(0.101960786, 0.101960786, 0.12941177, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="." unique_id=152252171]
+modulate = Color(0, 0.61960787, 0.21568628, 1)
+layout_mode = 0
+offset_left = 252.0
+offset_top = 39.0
+offset_right = 860.0
+offset_bottom = 69.0
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_454ny")
+theme_override_font_sizes/font_size = 26
 value = 100.0
+
+[node name="Label" type="Label" parent="." unique_id=1999331489]
+layout_mode = 0
+offset_left = 435.0
+offset_top = 7.0
+offset_right = 701.0
+offset_bottom = 35.0
+theme_override_fonts/font = ExtResource("2_454ny")
+theme_override_font_sizes/font_size = 28
+text = "!REACTOR STABILITY!"
