@@ -3,6 +3,7 @@ using System;
 
 public partial class GameIdle : Control
 {
+	[Export] public AudioStreamPlayer3D _alert;
 	[Signal] public delegate void AuthorizedEventHandler();
 
 	[Export] private Timer _timer;
@@ -51,5 +52,6 @@ public partial class GameIdle : Control
 	private void OnTimerTimeout()
 	{
 		EmitSignal(SignalName.Authorized);
+		_alert.Play();
 	}
 }
