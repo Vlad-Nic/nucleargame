@@ -6,7 +6,7 @@ public partial class NuclearRods : Control
 {
 	//Constants
 	private const int   RodCount  = 5;
-	private const int   TimeLimit = 30;
+	private const int   TimeLimit = 10;
 
 	// Rod sizes (width x height) — XS to XL
 	private static readonly Vector2[] RodSizes = new Vector2[]

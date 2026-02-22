@@ -25,7 +25,7 @@ public partial class Numble : Control
 	//Constants
 	private const int Slots      = 4;
 	private const int MaxGuesses = 6;
-	private const int TimeLimit  = 60;
+	private const int TimeLimit  = 30;
 	
 
 	//checked
