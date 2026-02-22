@@ -26,7 +26,7 @@ public partial class ButtonMash : Control
 		{
 			GD.Print("The Bar is empty");
 			GlobalHealth.Instance.Drain(GlobalHealthPenalty);
-			_progressBar.Value += 100;
+			_progressbar.Value += 100;
 			// GetTree().ChangeSceneToFile("res://GameOver.tscn") from my test file with the mp4
 		}
 	}
