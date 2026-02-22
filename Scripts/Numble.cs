@@ -1,80 +1,65 @@
- using Godot;
+using Godot;
 using System;
 using System.Linq;
 
 public partial class Numble : Control
 {
-	//Export Vars
 	[Export] public Font font { get; set; } = null!;
-	
-	//Node refs — names match your scene exactly
+
 	[Export] private Label _failLabel;
-	[Export] private Label         _timerLabel   = null!;
-	[Export] private Label         _messageLabel = null!;
-	[Export] private GridContainer _guessGrid    = null!;
-	[Export] private Button        _submitButton = null!;
-	[Export] private Timer         _gameTimer    = null!;
+	[Export] private Label _timerLabel = null!;
+	[Export] private Label _messageLabel = null!;
+	[Export] private GridContainer _guessGrid = null!;
+	[Export] private Button _submitButton = null!;
+	[Export] private Timer _gameTimer = null!;
 	[Export] private LineEdit _slot0 = null!;
 	[Export] private LineEdit _slot1 = null!;
 	[Export] private LineEdit _slot2 = null!;
 	[Export] private LineEdit _slot3 = null!;
 
 	private LineEdit[] _inputSlots = null!;
-	
-	
-	//Constants
-	private const int Slots      = 4;
+
+	private const int Slots = 4;
 	private const int MaxGuesses = 5;
-	private const int TimeLimit  = 60;
-	
+	private const int TimeLimit = 60;
 
-	//checked
+	private static readonly Color CCorrect = new(0.18f, 0.62f, 0.35f);
+	private static readonly Color CPresent = new(0.79f, 0.63f, 0.14f);
+	private static readonly Color CAbsent = new(0.24f, 0.24f, 0.27f);
+	private static readonly Color CEmpty = new(0.18f, 0.18f, 0.21f);
+	private static readonly Color CWhite = new(1f, 1f, 1f);
 
-	// Colors
-	private static readonly Color CCorrect = new(0.18f, 0.62f, 0.35f); // green  – right digit, right place
-	private static readonly Color CPresent = new(0.79f, 0.63f, 0.14f); // yellow – right digit, wrong place
-	private static readonly Color CAbsent  = new(0.24f, 0.24f, 0.27f); // grey   – not in secret
-	private static readonly Color CEmpty   = new(0.18f, 0.18f, 0.21f); // unfilled
-	private static readonly Color CWhite   = new(1f, 1f, 1f);
-
-
-	// Grid cells built at runtime into GuessGrid
 	private (StyleBoxFlat Style, Label Lbl)[,] _cells = null!;
 
-	//Game state
-	private int[] _secret     = Array.Empty<int>();
-	private int   _guessCount = 0;
-	private int   _timeLeft   = TimeLimit;
-	private bool  _gameOver   = false;
+	private int[] _secret = Array.Empty<int>();
+	private int _guessCount = 0;
+	private int _timeLeft = TimeLimit;
+	private bool _gameOver = false;
 
-	
 	public override void _Ready()
 	{
 		_failLabel.Visible = false;
 		_inputSlots = new LineEdit[] { _slot0, _slot1, _slot2, _slot3 };
-		
-		// Slots are assigned via export, just wire up the events
+
 		for (int i = 0; i < Slots; i++)
 		{
 			int captured = i;
 			_inputSlots[i].TextChanged += (text) => OnSlotChanged(text, captured);
-			_inputSlots[i].GuiInput    += (e)    => OnSlotInput(e, captured);
+			_inputSlots[i].GuiInput += (e) => OnSlotInput(e, captured);
 		}
 
-		_submitButton.Pressed  += OnSubmit;
+		_submitButton.Pressed += OnSubmit;
 
 		_gameTimer.WaitTime = 1.0;
-		_gameTimer.OneShot  = false;
-		_gameTimer.Timeout  += OnTick;
+		_gameTimer.OneShot = false;
+		_gameTimer.Timeout += OnTick;
 
 		BuildGrid();
 		NewGame();
 	}
 
-	//Populate GuessGrid with MaxGuesses × Slots coloured cells
 	private void BuildGrid()
 	{
-		// Clear any existing children first (safety)
 		foreach (Node child in _guessGrid.GetChildren())
 			child.QueueFree();
 
@@ -86,10 +71,10 @@ public partial class Numble : Control
 			{
 				var style = new StyleBoxFlat
 				{
-					BgColor                 = CEmpty,
-					CornerRadiusTopLeft     = 6,
-					CornerRadiusTopRight    = 6,
-					CornerRadiusBottomLeft  = 6,
+					BgColor = CEmpty,
+					CornerRadiusTopLeft = 6,
+					CornerRadiusTopRight = 6,
+					CornerRadiusBottomLeft = 6,
 					CornerRadiusBottomRight = 6
 				};
 
@@ -101,10 +86,10 @@ public partial class Numble : Control
 
 				var lbl = new Label
 				{
-					Text                = "",
+					Text = "",
 					HorizontalAlignment = HorizontalAlignment.Center,
-					VerticalAlignment   = VerticalAlignment.Center,
-					AutowrapMode        = TextServer.AutowrapMode.Off
+					VerticalAlignment = VerticalAlignment.Center,
+					AutowrapMode = TextServer.AutowrapMode.Off
 				};
 				lbl.AddThemeFontOverride("font", font);
 				lbl.AddThemeFontSizeOverride("font_size", 28);
@@ -118,25 +103,23 @@ public partial class Numble : Control
 		}
 	}
 
-	//New game
 	private void NewGame()
 	{
-		// 4 unique digits picked from 0–9
 		var pool = Enumerable.Range(0, 10).ToList();
-		var rng  = new RandomNumberGenerator();
+		var rng = new RandomNumberGenerator();
 		rng.Randomize();
 
 		_secret = new int[Slots];
 		for (int i = 0; i < Slots; i++)
 		{
-			int idx    = rng.RandiRange(0, pool.Count - 1);
+			int idx = rng.RandiRange(0, pool.Count - 1);
 			_secret[i] = pool[idx];
 			pool.RemoveAt(idx);
 		}
 
 		_guessCount = 0;
-		_timeLeft   = TimeLimit;
-		_gameOver   = false;
+		_timeLeft = TimeLimit;
+		_gameOver = false;
 
 		for (int r = 0; r < MaxGuesses; r++)
 			for (int c = 0; c < Slots; c++)
@@ -151,7 +134,6 @@ public partial class Numble : Control
 		_gameTimer.Start();
 	}
 
-	//Timer
 	private void OnTick()
 	{
 		if (_gameOver) return;
@@ -160,7 +142,7 @@ public partial class Numble : Control
 		UpdateTimerLabel();
 
 		if (_timeLeft <= 0)
-			EndGame(false, $"Time's up!  Secret was: {SecretString()}");
+			EndGame(false, $"Time's up! Secret was: {SecretString()}");
 	}
 
 	private void UpdateTimerLabel()
@@ -170,7 +152,6 @@ public partial class Numble : Control
 			_timeLeft <= 5 ? new Color(0.9f, 0.2f, 0.2f) : CWhite);
 	}
 
-	//Submit
 	private void OnSubmit()
 	{
 		if (_gameOver) return;
@@ -204,7 +185,7 @@ public partial class Numble : Control
 		}
 		else if (_guessCount >= MaxGuesses)
 		{
-			EndGame(false, $"No guesses left!  Secret was: {SecretString()}");
+			EndGame(false, $"No guesses left! Secret was: {SecretString()}");
 		}
 		else
 		{
@@ -212,7 +193,6 @@ public partial class Numble : Control
 		}
 	}
 
-	// 2 = correct place, 1 = wrong place, 0 = absent
 	private int[] Score(int[] guess)
 	{
 		var result = new int[Slots];
@@ -260,11 +240,10 @@ public partial class Numble : Control
 		SetInputEnabled(false);
 	}
 
-	// Helpers 
 	private void SetCell(int row, int col, string text, Color bg)
 	{
 		_cells[row, col].Style.BgColor = bg;
-		_cells[row, col].Lbl.Text      = text;
+		_cells[row, col].Lbl.Text = text;
 	}
 
 	private void OnSlotChanged(string newText, int slotIdx)
@@ -277,14 +256,14 @@ public partial class Numble : Control
 
 		if (_inputSlots[slotIdx].Text != filtered)
 		{
-			_inputSlots[slotIdx].Text        = filtered;
+			_inputSlots[slotIdx].Text = filtered;
 			_inputSlots[slotIdx].CaretColumn = filtered.Length;
 		}
 
 		if (filtered.Length == 1 && slotIdx < Slots - 1)
 			_inputSlots[slotIdx + 1].GrabFocus();
 	}
-	
+
 	private void OnSlotInput(InputEvent e, int slotIdx)
 	{
 		if (e is not InputEventKey key || !key.Pressed) return;

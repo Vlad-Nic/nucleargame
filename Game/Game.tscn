@@ -20,12 +20,10 @@ albedo_color = Color(0.60933006, 0.6093301, 0.60933006, 1)
 material = SubResource("StandardMaterial3D_fuqhk")
 size = Vector3(50, 0.1, 50)
 
-[node name="Game" type="Node3D" unique_id=1059251469 node_paths=PackedStringArray("_centerPanel", "_leftPanel", "_rightPanel", "PlayerCam")]
+[node name="Game" type="Node3D" unique_id=1059251469 node_paths=PackedStringArray("_leftPanel", "PlayerCam")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
 script = ExtResource("1_iv3md")
-_centerPanel = NodePath("ButtonMashGuiPanel")
-_leftPanel = NodePath("NumbleGuiPanel")
-_rightPanel = NodePath("RodGuiPanel")
+_leftPanel = NodePath("NumbleGui")
 PlayerCam = NodePath("Camera3D")
 _zoomedPositionRight = Vector3(1.8, 1.246, 6.187)
 
@@ -37,8 +35,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.70623803, 1.0177765, -0.61
 visible = false
 shape = SubResource("BoxShape3D_hqwdr")
 
-[node name="NumbleGuiPanel" parent="." unique_id=1209827852 instance=ExtResource("2_vrr3t")]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.4448452, 1.2559042, 6.339509)
+[node name="NumbleGui" parent="." unique_id=431956978 instance=ExtResource("3_oscxy")]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, -2.4566288, 1.1746273, 6.271582)
 
 [node name="Computer2" parent="." unique_id=1212618555 instance=ExtResource("1_hqwdr")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.1480422, 0, 6.3189054)
