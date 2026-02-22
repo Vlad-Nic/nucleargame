@@ -301,7 +301,7 @@ public partial class NuclearRods : Control
 		}
 		else if (_timeLeft <= 0)
 		{
-			_messageLabel.Text = "Meltdown! Time ran out!";
+			_messageLabel.Text = "Task Failed! Time ran out!";
 			_messageLabel.AddThemeColorOverride("font_color", new Color(1f, 0.3f, 0.2f));
 			GlobalHealth.Instance.Drain(GlobalHealthPenalty);
 			EmitSignal(SignalName.GameLost);
