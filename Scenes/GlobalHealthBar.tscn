@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dvjcmt7u0pc0x" path="res://Scripts/GlobalHealthBarUI.cs" id="1_nkew5"]
 [ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_454ny"]
 
-[node name="GlobalHealthBar" type="Control" unique_id=86176004]
+[node name="GlobalHealthBar" type="Control" unique_id=95263201]
 layout_mode = 3
 anchors_preset = 0
 script = ExtResource("1_nkew5")

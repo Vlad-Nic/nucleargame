@@ -6,26 +6,26 @@ public partial class NuclearRods : Control
 {
 	//Constants
 	private const int   RodCount  = 5;
-	private const int   TimeLimit = 10;
+	private const int   TimeLimit = 30;
 
 	// Rod sizes (width x height) — XS to XL
 	private static readonly Vector2[] RodSizes = new Vector2[]
 	{
-		new(28, 80),   // size 0 — smallest
-		new(36, 108),  // size 1
-		new(44, 136),  // size 2
-		new(52, 164),  // size 3
-		new(60, 192),  // size 4 — largest
+		new(14, 40),   // size 0 — smallest
+		new(18, 54),  // size 1
+		new(22, 68),  // size 2
+		new(26, 82),  // size 3
+		new(30, 96),  // size 4 — largest
 	};
 
 	// Box sizes — slightly larger than rod so it looks like a slot
 	private static readonly Vector2[] BoxSizes = new Vector2[]
 	{
-		new(52,  104),
-		new(60,  132),
-		new(68,  160),
-		new(76,  188),
-		new(84,  216),
+		new(26,  52),
+		new(30,  66),
+		new(34,  80),
+		new(38,  94),
+		new(42, 108),
 	};
 
 	// Colour per size index (eerie nuclear greens / yellows)
@@ -39,13 +39,12 @@ public partial class NuclearRods : Control
 	};
 
 	//Node refs
-	private Label   _timerLabel   = null!;
-	private Label   _messageLabel = null!;
-	private Label   _instructionLabel = null!;
-	private Control _rodContainer = null!;
-	private Control _boxContainer = null!;
-	private Button  _restartButton= null!;
-	private Timer   _gameTimer    = null!;
+	[Export] private Label   _timerLabel   = null!;
+	[Export] private Label   _messageLabel = null!;
+	[Export] private Label   _instructionLabel = null!;
+	[Export] private Control _rodContainer = null!;
+	[Export] private Control _boxContainer = null!;
+	[Export] private Timer   _gameTimer    = null!;
 
 	//Runtime data
 	private record RodData(Panel Visual, Vector2 HomePosition, int SizeIndex, bool Placed = false);
@@ -66,15 +65,6 @@ public partial class NuclearRods : Control
 	//Lifecycle
 	public override void _Ready()
 	{
-		_timerLabel       = GetNode<Label>("TimerLabel");
-		_messageLabel     = GetNode<Label>("MessageLabel");
-		_instructionLabel = GetNode<Label>("InstructionLabel");
-		_rodContainer     = GetNode<Control>("RodContainer");
-		_boxContainer     = GetNode<Control>("BoxContainer");
-		_restartButton    = GetNode<Button>("RestartButton");
-		_gameTimer        = GetNode<Timer>("GameTimer");
-
-		_restartButton.Pressed += StartGame;
 		_gameTimer.Timeout     += OnTick;
 		_gameTimer.WaitTime     = 1.0;
 		_gameTimer.OneShot      = false;
@@ -90,7 +80,6 @@ public partial class NuclearRods : Control
 		_draggedRod = -1;
 		_timeLeft = TimeLimit;
 
-		_restartButton.Visible  = false;
 		_messageLabel.Text      = "";
 		_timerLabel.Text        = $"Time: {_timeLeft}";
 		_timerLabel.AddThemeColorOverride("font_color", new Color(1, 1, 1));
@@ -307,8 +296,6 @@ public partial class NuclearRods : Control
 			_messageLabel.Text = "Wrong slot! Reactor breach!";
 			_messageLabel.AddThemeColorOverride("font_color", new Color(1f, 0.3f, 0.2f));
 		}
-
-		_restartButton.Visible = true;
 	}
 
 	//Visual factories

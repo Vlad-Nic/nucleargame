@@ -16,17 +16,20 @@ shading_mode = 0
 albedo_texture = SubResource("ViewportTexture_n8cko")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dv78n"]
-size = Vector3(3, 2, 0.1)
+size = Vector3(1.8, 1.4, 0.1)
 
-[node name="NumbleGui" type="Node3D" unique_id=431956978 node_paths=PackedStringArray("_area", "_subViewport")]
+[node name="NumbleGui" type="Node3D" unique_id=431956978 node_paths=PackedStringArray("_area", "_subViewport", "_area", "_subViewport")]
 process_mode = 3
 script = ExtResource("1_o5e6b")
 _area = NodePath("MeshInstance3D/Area3D")
 _subViewport = NodePath("SubViewport")
+_area = NodePath("MeshInstance3D/Area3D")
+_subViewport = NodePath("SubViewport")
 
 [node name="SubViewport" type="SubViewport" parent="." unique_id=2140074042]
+physics_object_picking = true
 gui_embed_subwindows = true
-size = Vector2i(560, 400)
+size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
 [node name="Numble" parent="SubViewport" unique_id=1825611334 instance=ExtResource("2_o5e6b")]

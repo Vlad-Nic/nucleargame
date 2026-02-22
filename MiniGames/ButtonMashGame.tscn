@@ -26,9 +26,9 @@ text = "OFFICE VENTILATION"
 
 [node name="Image" type="Label" parent="." unique_id=1407594344]
 layout_mode = 0
-offset_left = 752.0
+offset_left = 689.0
 offset_top = 165.0
-offset_right = 1143.0
+offset_right = 1080.0
 offset_bottom = 637.0
 theme_override_colors/font_color = Color(0, 0.84313726, 0.36078432, 1)
 theme_override_font_sizes/font_size = 8
@@ -87,9 +87,9 @@ show_percentage = false
 
 [node name="AttentionLabel" type="Label" parent="." unique_id=669968314]
 layout_mode = 0
-offset_left = 106.0
+offset_left = 176.0
 offset_top = 305.0
-offset_right = 353.0
+offset_right = 423.0
 offset_bottom = 330.0
 theme_override_colors/font_color = Color(1, 0, 0, 1)
 theme_override_fonts/font = ExtResource("2_20okq")
@@ -98,9 +98,9 @@ text = "Attention Employee!"
 
 [node name="Label" type="Label" parent="." unique_id=1670479770]
 layout_mode = 0
-offset_left = 47.0
+offset_left = 117.0
 offset_top = 343.0
-offset_right = 393.0
+offset_right = 463.0
 offset_bottom = 526.0
 theme_override_colors/font_color = Color(0, 0.84313726, 0.36078432, 1)
 theme_override_fonts/font = ExtResource("2_20okq")

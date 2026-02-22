@@ -1,91 +1,92 @@
-[gd_scene format=3 uid="uid://cu0u3g0snaotv"]
+[gd_scene format=3 uid="uid://c2s57g7gqcx4g"]
 
 [ext_resource type="Script" uid="uid://bnuxala0uqo3p" path="res://Scripts/NuclearRods.cs" id="1_chn4s"]
+[ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_48pj8"]
 
-[node name="NuclearRods" type="Control" unique_id=529923940]
+[node name="NuclearRods" type="Control" unique_id=529923940 node_paths=PackedStringArray("_timerLabel", "_messageLabel", "_instructionLabel", "_rodContainer", "_boxContainer", "_gameTimer")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 480.0
-offset_bottom = 720.0
 grow_horizontal = 2
 grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
 script = ExtResource("1_chn4s")
+_timerLabel = NodePath("VBoxContainer/TimerLabel")
+_messageLabel = NodePath("VBoxContainer/MessageLabel")
+_instructionLabel = NodePath("VBoxContainer/InstructionLabel")
+_rodContainer = NodePath("VBoxContainer/RodContainer")
+_boxContainer = NodePath("VBoxContainer/BoxContainer")
+_gameTimer = NodePath("GameTimer")
 
 [node name="Background" type="ColorRect" parent="." unique_id=201084909]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = 480.0
-offset_bottom = 720.0
+grow_horizontal = 2
+grow_vertical = 2
 color = Color(0.08, 0.1, 0.08, 1)
 
-[node name="TitleLabel" type="Label" parent="." unique_id=244096983]
-layout_mode = 0
-offset_left = 300.0
-offset_top = 7.0
-offset_right = 780.0
-offset_bottom = 46.0
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=617449723]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -240.0
+offset_top = -152.0
+offset_right = 240.0
+offset_bottom = 152.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=244096983]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.4, 1, 0.4, 1)
+theme_override_fonts/font = ExtResource("2_48pj8")
 theme_override_font_sizes/font_size = 28
 text = "NUCLEAR ROD SORTING"
 horizontal_alignment = 1
 
-[node name="TimerLabel" type="Label" parent="." unique_id=1887116807]
-layout_mode = 0
-offset_left = 300.0
-offset_top = 51.0
-offset_right = 780.0
-offset_bottom = 83.0
+[node name="TimerLabel" type="Label" parent="VBoxContainer" unique_id=1887116807]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_48pj8")
 theme_override_font_sizes/font_size = 22
 text = "Time: 30"
 horizontal_alignment = 1
 
-[node name="InstructionLabel" type="Label" parent="." unique_id=1860826851]
-layout_mode = 0
-offset_left = 300.0
-offset_top = 90.0
-offset_right = 780.0
-offset_bottom = 114.0
+[node name="InstructionLabel" type="Label" parent="VBoxContainer" unique_id=1860826851]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.7, 0.7, 0.7, 1)
-theme_override_font_sizes/font_size = 14
+theme_override_fonts/font = ExtResource("2_48pj8")
+theme_override_font_sizes/font_size = 15
 text = "Drag each rod to the matching box!"
 horizontal_alignment = 1
 
-[node name="RodContainer" type="Control" parent="." unique_id=1655991993]
-anchors_preset = 0
-offset_left = 300.0
-offset_top = 102.0
-offset_right = 780.0
-offset_bottom = 402.0
-
-[node name="BoxContainer" type="Control" parent="." unique_id=1036093844]
-anchors_preset = 0
-offset_left = 300.0
-offset_top = 406.0
-offset_right = 780.0
-offset_bottom = 636.0
-
-[node name="MessageLabel" type="Label" parent="." unique_id=2013694838]
-layout_mode = 0
-offset_left = 300.0
-offset_top = 365.0
-offset_right = 780.0
-offset_bottom = 400.0
+[node name="MessageLabel" type="Label" parent="VBoxContainer" unique_id=2013694838]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_fonts/font = ExtResource("2_48pj8")
 theme_override_font_sizes/font_size = 20
 horizontal_alignment = 1
 
-[node name="RestartButton" type="Button" parent="." unique_id=1982953329]
+[node name="RestartButton" type="Button" parent="VBoxContainer" unique_id=1982953329]
 visible = false
-layout_mode = 0
-offset_left = 155.0
-offset_top = 672.0
-offset_right = 325.0
-offset_bottom = 714.0
+layout_mode = 2
+size_flags_vertical = 4
 theme_override_font_sizes/font_size = 18
 text = "Play Again"
+
+[node name="RodContainer" type="Control" parent="VBoxContainer" unique_id=1655991993]
+custom_minimum_size = Vector2(480, 100)
+layout_mode = 2
+
+[node name="BoxContainer" type="Control" parent="VBoxContainer" unique_id=1036093844]
+custom_minimum_size = Vector2(480, 100)
+layout_mode = 2
 
 [node name="GameTimer" type="Timer" parent="." unique_id=1990332130]
