@@ -3,7 +3,7 @@ using System;
 
 public partial class ButtonMash : Control
 {
-	[Export] public float DrainSpeed = 15f; //Speed at which the progressbar drains
+	[Export] public float DrainSpeed = 2f; //Speed at which the progressbar drains
 	[Export] public float RefillAmount = 2f; //How much the progressbar will refill when the button is pressed
 	[Export] public float GlobalHealthPenalty = 5f; //how much the global health will lose on fail
 	
