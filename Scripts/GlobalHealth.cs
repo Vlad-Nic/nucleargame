@@ -5,7 +5,7 @@ public partial class GlobalHealth : Node
 {
 	public static GlobalHealth Instance { get; private set; }
 
-	[Export] public float MaxHealth = 10f;
+	[Export] public float MaxHealth = 100f;
 	public float CurrentHealth { get; private set; }
 
 	[Signal]
@@ -43,6 +43,6 @@ public partial class GlobalHealth : Node
 	private void TriggerGameOver()
 	{
 		SetProcess(false); //stop multiple triggers
-		//GetTree().ChangeSceneToFile("res://GameOver.tscn");
+		GetTree().ChangeSceneToFile("res://Scenes/GameOver.tscn");
 	}
 }

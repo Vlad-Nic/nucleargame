@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://dvjcmt7u0pc0x" path="res://Scripts/GlobalHealthBarUI.cs" id="1_nkew5"]
 [ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_454ny"]
 
-[node name="GlobalHealthBar" type="Control" unique_id=95263201 node_paths=PackedStringArray("_timeRemaining")]
+[node name="GlobalHealthBar" type="Control" unique_id=95263201 node_paths=PackedStringArray("_timeRemaining", "_halfHealthWarning")]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -11,6 +11,7 @@ anchor_right = 0.5
 grow_horizontal = 2
 script = ExtResource("1_nkew5")
 _timeRemaining = NodePath("TimeRemaining")
+_halfHealthWarning = NodePath("HalfHealthWarningLabel")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=152252171]
 modulate = Color(0, 0.61960787, 0.21568628, 1)
@@ -41,6 +42,25 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_454ny")
 theme_override_font_sizes/font_size = 28
 text = "!REACTOR STABILITY!"
+
+[node name="HalfHealthWarningLabel" type="Label" parent="." unique_id=745187009]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -299.0
+offset_top = 498.0
+offset_right = 301.0
+offset_bottom = 546.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_colors/font_color = Color(1, 0, 0, 1)
+theme_override_fonts/font = ExtResource("2_454ny")
+theme_override_font_sizes/font_size = 50
+text = "REACTOR STABILITY AT 50%"
 
 [node name="Label2" type="Label" parent="." unique_id=2100119984]
 layout_mode = 1
