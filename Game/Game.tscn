@@ -17,6 +17,7 @@
 [ext_resource type="Texture2D" uid="uid://dsgt8x5n06cfd" path="res://Assets/Picture Frame/solaris.jpg" id="15_vl8r5"]
 [ext_resource type="AudioStream" uid="uid://cmyfj6l16up3g" path="res://Audio/chair.mp3" id="16_xy31k"]
 [ext_resource type="AudioStream" uid="uid://d2nlxqrs0is0r" path="res://Audio/hum.mp3" id="17_bj82y"]
+[ext_resource type="AudioStream" uid="uid://cbqyun70e32bf" path="res://Audio/tickingclock.wav" id="18_tbtgf"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hqwdr"]
 size = Vector3(3.1802979, 2.247345, 3.3286133)
@@ -187,3 +188,9 @@ pitch_scale = 0.7
 stream = ExtResource("17_bj82y")
 volume_db = -20.0
 pitch_scale = 0.7
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=776218738]
+stream = ExtResource("18_tbtgf")
+volume_db = -15.0
+pitch_scale = 0.5
+autoplay = true

@@ -1,7 +1,8 @@
 [gd_scene format=3 uid="uid://mdiqm4d64x6m"]
 
-[ext_resource type="Script" path="res://Scripts/MainMenu.cs" id="1_menu"]
+[ext_resource type="Script" uid="uid://bt67wtk1k1xwd" path="res://Scripts/MainMenu.cs" id="1_menu"]
 [ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_853f1"]
+[ext_resource type="AudioStream" uid="uid://cc6qxii7esef7" path="res://Audio/menumusic.mp3" id="3_8saeu"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.02, 0.06, 0.02, 0.92)
@@ -15,7 +16,7 @@ corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
 
-[node name="MainMenu" type="Control" unique_id=1775461984]
+[node name="MainMenu" type="Control" unique_id=1775461984 node_paths=PackedStringArray("_menuMusic")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -23,6 +24,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_menu")
+_menuMusic = NodePath("AudioStreamPlayer")
 
 [node name="Background" type="ColorRect" parent="." unique_id=913524093]
 layout_mode = 0
@@ -97,3 +99,7 @@ theme_override_fonts/font = ExtResource("2_853f1")
 theme_override_font_sizes/font_size = 30
 text = "> QUIT"
 flat = true
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1396643156]
+stream = ExtResource("3_8saeu")
+volume_db = -15.0
