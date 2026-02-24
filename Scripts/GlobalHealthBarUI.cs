@@ -7,6 +7,7 @@ public partial class GlobalHealthBarUI : Control
 	[Export] public Timer timer;
 	[Export] public Label _timeRemaining;
 	[Export] public Label _halfHealthWarning;
+	[Export] public AudioStreamPlayer _reactorWarning;
 	private bool _hasFlashed50Percent = false;
 
 	public override void _Ready()
@@ -49,6 +50,7 @@ public partial class GlobalHealthBarUI : Control
 		{
 			_hasFlashed50Percent = true;
 			FlashLabel(_halfHealthWarning);
+			_reactorWarning.Play();
 		}
 	}
 	
@@ -57,9 +59,9 @@ public partial class GlobalHealthBarUI : Control
 		for (int i = 0; i < flashCount; i++)
 		{
 			label.Visible = false;
-			await Task.Delay(200);
+			await Task.Delay(500);
 			label.Visible = true;
-			await Task.Delay(200);
+			await Task.Delay(500);
 		}
 		label.Visible = false;
 	}
