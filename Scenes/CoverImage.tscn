@@ -1,0 +1,73 @@
+[gd_scene format=3 uid="uid://dwnf0ma7a4nnc"]
+
+[ext_resource type="Texture2D" uid="uid://dm3yvxbniugkv" path="res://Assets/ASCII Art/skull.png" id="1_hv8t8"]
+[ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_45dod"]
+
+[node name="CoverImage" type="Control" unique_id=1455820716]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="Background" type="ColorRect" parent="." unique_id=764076361]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.02, 0.05, 0.02, 1)
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=415868337]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -260.0
+offset_top = -135.5
+offset_right = 260.0
+offset_bottom = 135.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 33
+
+[node name="Skull" type="Sprite2D" parent="VBoxContainer" unique_id=2012607268]
+position = Vector2(-316, 128.5)
+texture = ExtResource("1_hv8t8")
+
+[node name="Skull2" type="Sprite2D" parent="VBoxContainer" unique_id=1241652712]
+position = Vector2(836, 128.5)
+texture = ExtResource("1_hv8t8")
+
+[node name="TitleLabel" type="Label" parent="VBoxContainer" unique_id=1708443448]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_45dod")
+theme_override_font_sizes/font_size = 100
+text = "MANUAL"
+horizontal_alignment = 1
+
+[node name="TitleLabel2" type="Label" parent="VBoxContainer" unique_id=1511234424]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.2, 1, 0.2, 1)
+theme_override_fonts/font = ExtResource("2_45dod")
+theme_override_font_sizes/font_size = 75
+text = "MELTDOWN"
+horizontal_alignment = 1
+
+[node name="SubtitleLabel" type="Label" parent="VBoxContainer" unique_id=1047421147]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_colors/font_color = Color(0.4, 0.8, 0.4, 1)
+theme_override_fonts/font = ExtResource("2_45dod")
+theme_override_font_sizes/font_size = 40
+text = "REACTOR CONTROL SIMULATION"
+horizontal_alignment = 1

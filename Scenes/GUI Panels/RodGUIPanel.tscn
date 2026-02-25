@@ -54,10 +54,8 @@ albedo_texture = SubResource("ViewportTexture_7i2gn")
 [sub_resource type="BoxShape3D" id="BoxShape3D_de17b"]
 size = Vector3(1.8, 1.4, 0.1)
 
-[node name="RodGuiPanel" type="Node3D" unique_id=386153917 node_paths=PackedStringArray("_area", "_subViewport", "_area", "_subViewport")]
+[node name="RodGuiPanel" type="Node3D" unique_id=386153917 node_paths=PackedStringArray("_area", "_subViewport")]
 script = ExtResource("1_fbwr5")
-_area = NodePath("MeshInstance3D/Area3D")
-_subViewport = NodePath("SubViewport")
 _area = NodePath("MeshInstance3D/Area3D")
 _subViewport = NodePath("SubViewport")
 
@@ -133,7 +131,7 @@ volume_db = -25.0
 
 [node name="Fail" type="AudioStreamPlayer3D" parent="." unique_id=1674777472]
 stream = ExtResource("8_ex2lx")
-volume_db = -25.0
+volume_db = -30.0
 
 [node name="Alert" type="AudioStreamPlayer3D" parent="." unique_id=1975839436]
 stream = ExtResource("9_ex2lx")

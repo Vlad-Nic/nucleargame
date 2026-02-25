@@ -26,6 +26,7 @@ GlobalHealth="*uid://bnwnjdqffhcgd"
 [display]
 
 window/size/mode=3
+mouse_cursor/custom_image="uid://d31gbu63rkq04"
 
 [dotnet]
 

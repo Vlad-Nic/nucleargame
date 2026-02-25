@@ -13,6 +13,9 @@
 [ext_resource type="AudioStream" uid="uid://b66pkjm723fj7" path="res://Audio/failure.mp3" id="8_lhixr"]
 [ext_resource type="AudioStream" uid="uid://c7lewr1o0m7un" path="res://Audio/alert.mp3" id="9_0lpcu"]
 [ext_resource type="AudioStream" uid="uid://lb7vm4ibhqfw" path="res://Audio/invalid.mp3" id="10_yp1ee"]
+[ext_resource type="AudioStream" uid="uid://c0k1ifs4jalgx" path="res://Audio/keyboard.mp3" id="14_2ce8d"]
+[ext_resource type="AudioStream" uid="uid://jyvhqnpw71le" path="res://Audio/mouseClick.mp3" id="15_u4oce"]
+[ext_resource type="AudioStream" uid="uid://b0nj5hk6tsb10" path="res://Audio/mouseRelease.mp3" id="16_ygjra"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_15npq"]
 shader = ExtResource("7_aqvc3")
@@ -53,10 +56,8 @@ albedo_texture = SubResource("ViewportTexture_n8cko")
 [sub_resource type="BoxShape3D" id="BoxShape3D_dv78n"]
 size = Vector3(1.8, 1.4, 0.1)
 
-[node name="NumbleGuiPanel" type="Node3D" unique_id=431956978 node_paths=PackedStringArray("_area", "_subViewport", "_area", "_subViewport")]
+[node name="NumbleGuiPanel" type="Node3D" unique_id=431956978 node_paths=PackedStringArray("_area", "_subViewport")]
 script = ExtResource("1_o5e6b")
-_area = NodePath("MeshInstance3D/Area3D")
-_subViewport = NodePath("SubViewport")
 _area = NodePath("MeshInstance3D/Area3D")
 _subViewport = NodePath("SubViewport")
 
@@ -89,11 +90,14 @@ layout_mode = 1
 _alert = NodePath("../../../Alert")
 _timer = NodePath("../Timer")
 
-[node name="Numble" parent="SubViewport/MonitorScreen" unique_id=1825611334 node_paths=PackedStringArray("_fail", "_success", "_invalid") instance=ExtResource("2_o5e6b")]
+[node name="Numble" parent="SubViewport/MonitorScreen" unique_id=1825611334 node_paths=PackedStringArray("_fail", "_success", "_invalid", "_keyboard", "_click", "_release") instance=ExtResource("2_o5e6b")]
 layout_mode = 1
 _fail = NodePath("../../../Fail")
 _success = NodePath("../../../Success")
 _invalid = NodePath("../../../Invalid")
+_keyboard = NodePath("../../../Keyboard")
+_click = NodePath("../../../Click")
+_release = NodePath("../../../Release")
 
 [node name="GameComplete" parent="SubViewport/MonitorScreen" unique_id=1212426715 instance=ExtResource("5_3s4qe")]
 layout_mode = 1
@@ -131,7 +135,7 @@ volume_db = -25.0
 
 [node name="Fail" type="AudioStreamPlayer3D" parent="." unique_id=1836475041]
 stream = ExtResource("8_lhixr")
-volume_db = -25.0
+volume_db = -30.0
 
 [node name="Alert" type="AudioStreamPlayer3D" parent="." unique_id=1487647124]
 stream = ExtResource("9_0lpcu")
@@ -140,3 +144,15 @@ volume_db = -15.0
 [node name="Invalid" type="AudioStreamPlayer3D" parent="." unique_id=823932381]
 stream = ExtResource("10_yp1ee")
 volume_db = -15.0
+
+[node name="Keyboard" type="AudioStreamPlayer3D" parent="." unique_id=1940485717]
+stream = ExtResource("14_2ce8d")
+volume_db = -30.0
+
+[node name="Click" type="AudioStreamPlayer3D" parent="." unique_id=398336397]
+stream = ExtResource("15_u4oce")
+volume_db = -30.0
+
+[node name="Release" type="AudioStreamPlayer3D" parent="." unique_id=1918565435]
+stream = ExtResource("16_ygjra")
+volume_db = -30.0

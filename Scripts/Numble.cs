@@ -7,6 +7,9 @@ public partial class Numble : Control
 	[Export] public AudioStreamPlayer3D _fail;
 	[Export] public AudioStreamPlayer3D _success;
 	[Export] public AudioStreamPlayer3D _invalid;
+	[Export] public AudioStreamPlayer3D _keyboard;
+	[Export] public AudioStreamPlayer3D _click;
+	[Export] public AudioStreamPlayer3D _release;
 	[Signal] public delegate void GameWonEventHandler();
 	[Signal] public delegate void GameLostEventHandler();
 	[Export] public float GlobalHealthPenalty = 15f; //how much the global health will lose on fail
@@ -53,7 +56,22 @@ public partial class Numble : Control
 			_inputSlots[i].GuiInput += (e) => OnSlotInput(e, captured);
 		}
 
-		_submitButton.Pressed += OnSubmit;
+		_submitButton.Pressed += () =>
+		{
+			_click.Play();
+			OnSubmit();
+		};
+
+		_submitButton.GuiInput += (e) =>
+		{
+			if (e is InputEventMouseButton mouseEvent)
+			{
+				if (!mouseEvent.Pressed && _release != null)
+				{
+					_release.Play();
+				}
+			}
+		};
 
 		_gameTimer.WaitTime = 1.0;
 		_gameTimer.OneShot  = false;
@@ -172,6 +190,8 @@ public partial class Numble : Control
 	{
 		if (_gameOver) return;
 
+		
+
 		var guess = new int[Slots];
 		for (int i = 0; i < Slots; i++)
 		{
@@ -286,6 +306,11 @@ public partial class Numble : Control
 		{
 			_inputSlots[slotIdx].Text = filtered;
 			_inputSlots[slotIdx].CaretColumn = filtered.Length;
+			
+			if (filtered.Length == 1)
+			{
+				_keyboard.Play();
+			}
 		}
 
 		if (filtered.Length == 1 && slotIdx < Slots - 1)
@@ -298,6 +323,7 @@ public partial class Numble : Control
 
 		if (key.Keycode == Key.Backspace)
 		{
+			_keyboard.Play();
 			_inputSlots[slotIdx].Text = "";
 			if (slotIdx > 0)
 			{
@@ -308,6 +334,7 @@ public partial class Numble : Control
 		}
 		else if (key.Keycode == Key.Enter || key.Keycode == Key.KpEnter)
 		{
+			_keyboard.Play();
 			OnSubmit();
 			GetViewport().SetInputAsHandled();
 		}
