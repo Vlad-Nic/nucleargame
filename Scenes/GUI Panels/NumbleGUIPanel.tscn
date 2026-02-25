@@ -3,12 +3,40 @@
 [ext_resource type="Script" uid="uid://c0u8wj1qhyt1j" path="res://Scripts/NumbleGui.cs" id="1_o5e6b"]
 [ext_resource type="PackedScene" uid="uid://bgcayy35nber" path="res://MiniGames/Numble.tscn" id="2_o5e6b"]
 [ext_resource type="Script" uid="uid://ctvm28owwwr84" path="res://Scripts/MonitorScreenNumble.cs" id="2_sfv3g"]
+[ext_resource type="PackedScene" uid="uid://d0lasmtone20k" path="res://Scenes/CriticalError.tscn" id="3_15npq"]
 [ext_resource type="PackedScene" uid="uid://mfg37dlbrxk8" path="res://Scenes/GameIdle.tscn" id="3_t6dpu"]
+[ext_resource type="Script" uid="uid://w1k2ddu0j6on" path="res://Scripts/CriticalError.cs" id="4_vxysd"]
 [ext_resource type="PackedScene" uid="uid://bldhud5ggsjnf" path="res://Scenes/GameComplete.tscn" id="5_3s4qe"]
 [ext_resource type="PackedScene" uid="uid://t2tlop86col4" path="res://Scenes/GameFail.tscn" id="6_sfv3g"]
+[ext_resource type="Shader" uid="uid://coq3cqkv3qjy4" path="res://Shaders/MonitorVHS.gdshader" id="7_aqvc3"]
 [ext_resource type="AudioStream" uid="uid://d34sirh4u8boo" path="res://Audio/success.mp3" id="7_m4jsa"]
 [ext_resource type="AudioStream" uid="uid://b66pkjm723fj7" path="res://Audio/failure.mp3" id="8_lhixr"]
 [ext_resource type="AudioStream" uid="uid://c7lewr1o0m7un" path="res://Audio/alert.mp3" id="9_0lpcu"]
+[ext_resource type="AudioStream" uid="uid://lb7vm4ibhqfw" path="res://Audio/invalid.mp3" id="10_yp1ee"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_15npq"]
+shader = ExtResource("7_aqvc3")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.150000007125
+shader_parameter/scanlines_width = 0.18000000855
+shader_parameter/grille_opacity = 0.050000002375
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.0
+shader_parameter/roll_size = 12.00000057
+shader_parameter/roll_variation = 0.95000004186512
+shader_parameter/distort_intensity = 0.00400000019
+shader_parameter/noise_opacity = 0.050000002375
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.0800000038
+shader_parameter/aberration = 0.00500004773750006
+shader_parameter/brightness = 1.15
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.170000008075
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.5
+shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_dv78n"]
 size = Vector2(1.8, 1.4)
@@ -38,7 +66,7 @@ gui_embed_subwindows = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="MonitorScreen" type="Control" parent="SubViewport" unique_id=279290618 node_paths=PackedStringArray("_gameStateIdle", "_numble", "_gameComplete", "_gameFail")]
+[node name="MonitorScreen" type="Control" parent="SubViewport" unique_id=279290618 node_paths=PackedStringArray("_gameStateIdle", "_numble", "_gameComplete", "_gameFail", "_criticalError")]
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -50,16 +78,22 @@ _gameStateIdle = NodePath("GameIdle")
 _numble = NodePath("Numble")
 _gameComplete = NodePath("GameComplete")
 _gameFail = NodePath("GameFail")
+_criticalError = NodePath("CriticalError")
 
-[node name="GameIdle" parent="SubViewport/MonitorScreen" unique_id=959119981 node_paths=PackedStringArray("_alert", "_timer") instance=ExtResource("3_t6dpu")]
+[node name="CriticalError" parent="SubViewport/MonitorScreen" unique_id=959119981 instance=ExtResource("3_15npq")]
+layout_mode = 1
+script = ExtResource("4_vxysd")
+
+[node name="GameIdle" parent="SubViewport/MonitorScreen" unique_id=26541152 node_paths=PackedStringArray("_alert", "_timer") instance=ExtResource("3_t6dpu")]
 layout_mode = 1
 _alert = NodePath("../../../Alert")
 _timer = NodePath("../Timer")
 
-[node name="Numble" parent="SubViewport/MonitorScreen" unique_id=1825611334 node_paths=PackedStringArray("_fail", "_success") instance=ExtResource("2_o5e6b")]
+[node name="Numble" parent="SubViewport/MonitorScreen" unique_id=1825611334 node_paths=PackedStringArray("_fail", "_success", "_invalid") instance=ExtResource("2_o5e6b")]
 layout_mode = 1
 _fail = NodePath("../../../Fail")
 _success = NodePath("../../../Success")
+_invalid = NodePath("../../../Invalid")
 
 [node name="GameComplete" parent="SubViewport/MonitorScreen" unique_id=1212426715 instance=ExtResource("5_3s4qe")]
 layout_mode = 1
@@ -68,6 +102,18 @@ layout_mode = 1
 layout_mode = 1
 
 [node name="Timer" type="Timer" parent="SubViewport/MonitorScreen" unique_id=2025781510]
+
+[node name="Shader" type="CanvasLayer" parent="SubViewport" unique_id=1292061459]
+
+[node name="VHSShader" type="ColorRect" parent="SubViewport/Shader" unique_id=824855386]
+material = SubResource("ShaderMaterial_15npq")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=1865164255]
 mesh = SubResource("QuadMesh_dv78n")
@@ -89,4 +135,8 @@ volume_db = -25.0
 
 [node name="Alert" type="AudioStreamPlayer3D" parent="." unique_id=1487647124]
 stream = ExtResource("9_0lpcu")
+volume_db = -15.0
+
+[node name="Invalid" type="AudioStreamPlayer3D" parent="." unique_id=823932381]
+stream = ExtResource("10_yp1ee")
 volume_db = -15.0

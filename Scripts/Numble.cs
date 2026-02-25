@@ -6,6 +6,7 @@ public partial class Numble : Control
 {
 	[Export] public AudioStreamPlayer3D _fail;
 	[Export] public AudioStreamPlayer3D _success;
+	[Export] public AudioStreamPlayer3D _invalid;
 	[Signal] public delegate void GameWonEventHandler();
 	[Signal] public delegate void GameLostEventHandler();
 	[Export] public float GlobalHealthPenalty = 15f; //how much the global health will lose on fail
@@ -178,6 +179,7 @@ public partial class Numble : Control
 			if (text.Length == 0 || !int.TryParse(text, out int digit) || digit < 0 || digit > 9)
 			{
 				_messageLabel.Text = "Fill all 4 slots with a digit (0–9)!";
+				_invalid.Play();
 				return;
 			}
 			guess[i] = digit;
@@ -186,6 +188,7 @@ public partial class Numble : Control
 		if (guess.Distinct().Count() != Slots)
 		{
 			_messageLabel.Text = "No repeating digits allowed!";
+			_invalid.Play();
 			return;
 		}
 

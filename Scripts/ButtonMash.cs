@@ -3,6 +3,7 @@ using System;
 
 public partial class ButtonMash : Control
 {
+	[Export] public AudioStreamPlayer3D _click;
 	[Export] public float DrainSpeed = 4f; //Speed at which the progressbar drains
 	[Export] public float RefillAmount = 1f; //How much the progressbar will refill when the button is pressed
 	[Export] public float GlobalHealthPenalty = 5f; //how much the global health will lose on fail
@@ -33,6 +34,7 @@ public partial class ButtonMash : Control
 	
 	private void OnButtonPressed()
 	{
+		_click.Play();
 		_progressbar.Value += RefillAmount; //Progress bar goes back up based off the set refill val
 		_progressbar.Value = Mathf.Min(_progressbar.Value, _progressbar.MaxValue); //cap at 100
 	}

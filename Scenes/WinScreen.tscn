@@ -1,9 +1,34 @@
 [gd_scene format=3 uid="uid://c80tpe75v637y"]
 
-[ext_resource type="Script" uid="uid://da4580332py36" path="res://Scripts/WinScreen.cs" id="1_win"]
+[ext_resource type="Script" path="res://Scripts/WinScreen.cs" id="1_win"]
 [ext_resource type="AudioStream" uid="uid://do6bb7wjtum3" path="res://Assets/Audio/PossibleWin.wav" id="2_82r0j"]
 [ext_resource type="Texture2D" uid="uid://d4clib2vlqmos" path="res://Assets/Images/FireWork.png" id="3_82r0j"]
 [ext_resource type="Texture2D" uid="uid://bh4iov588bbwt" path="res://Assets/Images/Trophy.png" id="3_fy21p"]
+[ext_resource type="Shader" uid="uid://cxf8arg42tq20" path="res://Shaders/VHS.gdshader" id="5_douls"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_6qhgi"]
+shader = ExtResource("5_douls")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.8400000399
+shader_parameter/scanlines_width = 0.18000000855
+shader_parameter/grille_opacity = 0.3130000148675
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.0
+shader_parameter/roll_size = 12.00000057
+shader_parameter/roll_variation = 0.95000004186512
+shader_parameter/distort_intensity = 0.00400000019
+shader_parameter/noise_opacity = 0.2000000095
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.0800000038
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 2.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.4130000196175
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.2
+shader_parameter/vignette_opacity = 0.5
 
 [node name="WinScreen" type="Control" unique_id=1605429023]
 layout_mode = 3
@@ -90,3 +115,15 @@ texture = ExtResource("3_82r0j")
 [node name="FireWork" type="Sprite2D" parent="Control" unique_id=304139020]
 position = Vector2(-660, -160)
 texture = ExtResource("3_82r0j")
+
+[node name="Shader" type="CanvasLayer" parent="." unique_id=1313241606]
+
+[node name="VHSShader" type="ColorRect" parent="Shader" unique_id=1319339639]
+material = SubResource("ShaderMaterial_6qhgi")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true

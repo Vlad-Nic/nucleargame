@@ -21,14 +21,17 @@ public partial class GameFail : Control
 	{
 		if (what == NotificationVisibilityChanged && Visible)
 		{
-			_timer.WaitTime = _rng.RandfRange(5f, 8f);
-			CallDeferred(nameof(StartTimerSafe));
+			if (_timer != null)
+			{
+				_timer.WaitTime = _rng.RandfRange(5f, 8f);
+				CallDeferred(nameof(StartTimerSafe));	
+			}
 		}
 	}
 
 	private void StartTimerSafe()
 	{
-		if (_timer.IsInsideTree())
+		if (_timer != null && _timer.IsInsideTree())
 			_timer.Start();
 	}
 }

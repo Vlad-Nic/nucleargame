@@ -59,14 +59,20 @@ public partial class PauseMenu : CanvasLayer
 	{
 		GetTree().Paused = false;
 		Input.MouseMode = Input.MouseModeEnum.Hidden;
-		GlobalHealth.Instance.ResetHealth();
-		
+		if (GlobalHealth.Instance != null && GlobalHealth.Instance.IsNodeReady())
+		{
+			GlobalHealth.Instance.ResetHealth();
+		}
 		GetTree().ReloadCurrentScene();
 	}
 
 	private void OnMainMenu()
 	{
 		GetTree().Paused = false;
+		if (GlobalHealth.Instance != null && GlobalHealth.Instance.IsNodeReady())
+		{
+			GlobalHealth.Instance.ResetHealth();
+		}
 		GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");
 	}
 

@@ -3,6 +3,8 @@
 [ext_resource type="Script" uid="uid://bt67wtk1k1xwd" path="res://Scripts/MainMenu.cs" id="1_menu"]
 [ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_853f1"]
 [ext_resource type="AudioStream" uid="uid://cc6qxii7esef7" path="res://Audio/menumusic.mp3" id="3_8saeu"]
+[ext_resource type="Texture2D" uid="uid://dm3yvxbniugkv" path="res://Assets/ASCII Art/skull.png" id="4_ghw46"]
+[ext_resource type="Shader" uid="uid://cxf8arg42tq20" path="res://Shaders/VHS.gdshader" id="5_df05h"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.02, 0.06, 0.02, 0.92)
@@ -15,6 +17,30 @@ corner_radius_top_left = 4
 corner_radius_top_right = 4
 corner_radius_bottom_right = 4
 corner_radius_bottom_left = 4
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_8um5k"]
+shader = ExtResource("5_df05h")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.8400000399
+shader_parameter/scanlines_width = 0.18000000855
+shader_parameter/grille_opacity = 0.3130000148675
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.0
+shader_parameter/roll_size = 12.00000057
+shader_parameter/roll_variation = 0.95000004186512
+shader_parameter/distort_intensity = 0.00400000019
+shader_parameter/noise_opacity = 0.2000000095
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.0800000038
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 2.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.4130000196175
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.2
+shader_parameter/vignette_opacity = 0.5
 
 [node name="MainMenu" type="Control" unique_id=1775461984 node_paths=PackedStringArray("_menuMusic")]
 layout_mode = 3
@@ -47,6 +73,16 @@ theme_override_styles/panel = SubResource("StyleBoxFlat_bg")
 [node name="VBoxContainer" type="VBoxContainer" parent="Panel" unique_id=346507422]
 layout_mode = 2
 theme_override_constants/separation = 20
+
+[node name="Skull" type="Sprite2D" parent="Panel/VBoxContainer" unique_id=1353306078]
+position = Vector2(-349, 258)
+scale = Vector2(0.6495773, 0.6045032)
+texture = ExtResource("4_ghw46")
+
+[node name="Skull2" type="Sprite2D" parent="Panel/VBoxContainer" unique_id=1201595248]
+position = Vector2(725.00006, 258)
+scale = Vector2(0.6495773, 0.6045032)
+texture = ExtResource("4_ghw46")
 
 [node name="TitleLabel" type="Label" parent="Panel/VBoxContainer" unique_id=1600207038]
 layout_mode = 2
@@ -103,3 +139,15 @@ flat = true
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1396643156]
 stream = ExtResource("3_8saeu")
 volume_db = -15.0
+
+[node name="Shader" type="CanvasLayer" parent="." unique_id=368469116]
+
+[node name="VHSShader" type="ColorRect" parent="Shader" unique_id=1180386246]
+material = SubResource("ShaderMaterial_8um5k")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true

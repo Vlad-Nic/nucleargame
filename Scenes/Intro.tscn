@@ -3,6 +3,31 @@
 [ext_resource type="Script" uid="uid://cr2dc8hapitxy" path="res://Scripts/Intro.cs" id="1_intro"]
 [ext_resource type="AudioStream" uid="uid://5a03hcuio8bt" path="res://Assets/Audio/JimmyAudios1.wav" id="2_rrrc0"]
 [ext_resource type="Texture2D" uid="uid://cfijm3v61qcnr" path="res://Assets/Images/Nuclear.png" id="3_vmpge"]
+[ext_resource type="Shader" uid="uid://cxf8arg42tq20" path="res://Shaders/VHS.gdshader" id="4_d0kpp"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_u3s32"]
+shader = ExtResource("4_d0kpp")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.8400000399
+shader_parameter/scanlines_width = 0.18000000855
+shader_parameter/grille_opacity = 0.3130000148675
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.0
+shader_parameter/roll_size = 12.00000057
+shader_parameter/roll_variation = 0.95000004186512
+shader_parameter/distort_intensity = 0.00400000019
+shader_parameter/noise_opacity = 0.2000000095
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.0800000038
+shader_parameter/aberration = 0.03
+shader_parameter/brightness = 2.0
+shader_parameter/discolor = true
+shader_parameter/warp_amount = 0.4130000196175
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.2
+shader_parameter/vignette_opacity = 0.5
 
 [node name="Intro" type="Control" unique_id=532993736]
 layout_mode = 3
@@ -85,3 +110,15 @@ offset_bottom = -20.0
 grow_horizontal = 2
 grow_vertical = 2
 color = Color(0, 0, 0, 1)
+
+[node name="Shader" type="CanvasLayer" parent="." unique_id=506933701]
+
+[node name="VHSShader" type="ColorRect" parent="Shader" unique_id=361104344]
+material = SubResource("ShaderMaterial_u3s32")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true

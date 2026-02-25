@@ -7,15 +7,18 @@ public partial class GlobalHealthBarUI : Control
 	[Export] public Timer timer;
 	[Export] public Label _timeRemaining;
 	[Export] public Label _halfHealthWarning;
-	[Export] public AudioStreamPlayer _reactorWarning;
+	[Export] public AudioStreamPlayer3D _reactorwarning;
 	private bool _hasFlashed50Percent = false;
 
 	public override void _Ready()
 	{
 		_bar = GetNode<ProgressBar>("ProgressBar");
 
-		GlobalHealth.Instance.HealthChanged += OnHealthChanged;
-		OnHealthChanged(GlobalHealth.Instance.CurrentHealth,GlobalHealth.Instance.MaxHealth);
+		if (GlobalHealth.Instance != null)
+		{
+			GlobalHealth.Instance.HealthChanged += OnHealthChanged;
+			OnHealthChanged(GlobalHealth.Instance.CurrentHealth, GlobalHealth.Instance.MaxHealth);
+		}
 		
 		timer.WaitTime = 240f;
 		
@@ -36,7 +39,11 @@ public partial class GlobalHealthBarUI : Control
 
 	public override void _ExitTree()
 	{
-		GlobalHealth.Instance.HealthChanged -= OnHealthChanged;
+		_hasFlashed50Percent = false; // reset for the next game
+		if (GlobalHealth.Instance != null)
+		{
+			GlobalHealth.Instance.HealthChanged -= OnHealthChanged;
+		}
 		timer.Timeout -= OnTimerTimeout;
 	}
 
@@ -50,7 +57,7 @@ public partial class GlobalHealthBarUI : Control
 		{
 			_hasFlashed50Percent = true;
 			FlashLabel(_halfHealthWarning);
-			_reactorWarning.Play();
+			_reactorwarning.Play();
 		}
 	}
 	

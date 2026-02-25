@@ -1,19 +1,43 @@
 using Godot;
 using System;
+using System.Threading.Tasks;
 
 public partial class GlobalHealth : Node
-{
+{	
 	public static GlobalHealth Instance { get; private set; }
 
-	[Export] public float MaxHealth = 100f;
+	public float _maxHealth = 60f;
+
+	[Export]
+	public float MaxHealth
+	{
+		get => _maxHealth;
+		set => _maxHealth = value;
+	}
+	
 	public float CurrentHealth { get; private set; }
 
 	[Signal]
 	public delegate void HealthChangedEventHandler(float current, float max);
+	
+	public override void _EnterTree()
+	{
+		if (Instance != null && Instance != this)
+		{
+			try
+			{
+				Instance.QueueFree();
+			}
+			catch (ObjectDisposedException)
+			{
+				// Old instance already disposed, that's fine
+			}
+		}
+		Instance = this;
+	}
 
 	public override void _Ready()
 	{
-		Instance = this;
 		CurrentHealth = MaxHealth;
 		EmitSignal(SignalName.HealthChanged, CurrentHealth, MaxHealth);
 	}
@@ -40,9 +64,20 @@ public partial class GlobalHealth : Node
 		CurrentHealth = MaxHealth;
 		EmitSignal(SignalName.HealthChanged, CurrentHealth, MaxHealth);
 	}
-	private void TriggerGameOver()
+	
+	private async void TriggerGameOver()
 	{
-		SetProcess(false); //stop multiple triggers
-		GetTree().ChangeSceneToFile("res://Scenes/GameOver.tscn");
+		SetProcess(false);
+		SirenContainer.Instance.StartSiren();
+		await Task.Delay(10000);
+		
+		try
+		{
+			GetTree().ChangeSceneToFile("res://Scenes/GameOver.tscn");
+		}
+		catch (ObjectDisposedException)
+		{
+			// GlobalHealth was disposed, that's okay
+		}
 	}
 }

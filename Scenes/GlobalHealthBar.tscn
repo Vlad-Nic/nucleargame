@@ -2,9 +2,8 @@
 
 [ext_resource type="Script" uid="uid://dvjcmt7u0pc0x" path="res://Scripts/GlobalHealthBarUI.cs" id="1_nkew5"]
 [ext_resource type="FontFile" uid="uid://7ujrykifgv7d" path="res://Fonts/Glass_TTY_VT220.ttf" id="2_454ny"]
-[ext_resource type="AudioStream" uid="uid://c5giqw5g0gc77" path="res://Audio/reactorwarning.wav" id="3_01vyu"]
 
-[node name="GlobalHealthBar" type="Control" unique_id=95263201 node_paths=PackedStringArray("_timeRemaining", "_halfHealthWarning", "_reactorWarning")]
+[node name="GlobalHealthBar" type="Control" unique_id=95263201 node_paths=PackedStringArray("_timeRemaining", "_halfHealthWarning")]
 layout_mode = 3
 anchors_preset = 5
 anchor_left = 0.5
@@ -13,7 +12,6 @@ grow_horizontal = 2
 script = ExtResource("1_nkew5")
 _timeRemaining = NodePath("TimeRemaining")
 _halfHealthWarning = NodePath("HalfHealthWarningLabel")
-_reactorWarning = NodePath("AudioStreamPlayer")
 
 [node name="ProgressBar" type="ProgressBar" parent="." unique_id=152252171]
 modulate = Color(0, 0.61960787, 0.21568628, 1)
@@ -43,7 +41,7 @@ offset_bottom = 34.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_454ny")
 theme_override_font_sizes/font_size = 28
-text = "!REACTOR STABILITY!"
+text = "REACTOR STABILITY"
 
 [node name="HalfHealthWarningLabel" type="Label" parent="." unique_id=745187009]
 visible = false
@@ -54,9 +52,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -475.0
-offset_top = 477.0
+offset_top = 99.0
 offset_right = 125.0
-offset_bottom = 525.0
+offset_bottom = 147.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(1.6221373, 1.6221373)
@@ -92,6 +90,3 @@ grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_454ny")
 theme_override_font_sizes/font_size = 30
 text = "2:00"
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=2069137108]
-stream = ExtResource("3_01vyu")

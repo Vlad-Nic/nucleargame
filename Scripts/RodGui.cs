@@ -2,8 +2,6 @@ using Godot;
 using System;
 public partial class RodGui : GuiPanel
 {
-	[Export] private Area3D _area;
-	[Export] private SubViewport _subViewport;
 	public override void _Ready()
 	{
 		_subViewport.GuiDisableInput = true;

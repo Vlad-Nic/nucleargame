@@ -6,6 +6,8 @@ public partial class NuclearRods : Control
 {
 	[Export] public AudioStreamPlayer3D _fail;
 	[Export] public AudioStreamPlayer3D _success;
+	[Export] public AudioStreamPlayer3D _mouseClick;
+	[Export] public AudioStreamPlayer3D _mouseRelease;
 	[Signal] public delegate void GameWonEventHandler();
 	[Signal] public delegate void GameLostEventHandler();
 	[Export] public float GlobalHealthPenalty = 10f; //how much the global health will lose on fail
@@ -165,8 +167,16 @@ public partial class NuclearRods : Control
 		{
 			if (mb.ButtonIndex == MouseButton.Left)
 			{
-				if (mb.Pressed)  TryBeginDrag(mb.GlobalPosition);
-				else             TryDrop(mb.GlobalPosition);
+				if (mb.Pressed)
+				{
+					TryBeginDrag(mb.GlobalPosition);
+					_mouseClick.Play();
+				}
+				else
+				{
+					TryDrop(mb.GlobalPosition);
+					_mouseRelease.Play();
+				}
 			}
 		}
 		else if (evt is InputEventMouseMotion mm)

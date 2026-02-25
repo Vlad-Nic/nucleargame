@@ -2,6 +2,35 @@
 
 [ext_resource type="Script" uid="uid://w85rea1rpram" path="res://Scripts/ButtonGui.cs" id="1_08etr"]
 [ext_resource type="PackedScene" uid="uid://f3xl62dkbtjr" path="res://MiniGames/ButtonMashGame.tscn" id="1_h4uxg"]
+[ext_resource type="Script" uid="uid://b03irauijk083" path="res://Scripts/MonitorScreenButton.cs" id="2_cgi0b"]
+[ext_resource type="PackedScene" uid="uid://d0lasmtone20k" path="res://Scenes/CriticalError.tscn" id="2_wkkyq"]
+[ext_resource type="Shader" uid="uid://coq3cqkv3qjy4" path="res://Shaders/MonitorVHS.gdshader" id="3_c65tl"]
+[ext_resource type="AudioStream" uid="uid://jyvhqnpw71le" path="res://Audio/mouseClick.mp3" id="3_q2me8"]
+[ext_resource type="Script" uid="uid://w1k2ddu0j6on" path="res://Scripts/CriticalError.cs" id="4_802d4"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c65tl"]
+shader = ExtResource("3_c65tl")
+shader_parameter/overlay = false
+shader_parameter/scanlines_opacity = 0.150000007125
+shader_parameter/scanlines_width = 0.18000000855
+shader_parameter/grille_opacity = 0.050000002375
+shader_parameter/resolution = Vector2(640, 480)
+shader_parameter/pixelate = false
+shader_parameter/roll = true
+shader_parameter/roll_speed = 1.0
+shader_parameter/roll_size = 12.00000057
+shader_parameter/roll_variation = 0.95000004186512
+shader_parameter/distort_intensity = 0.00400000019
+shader_parameter/noise_opacity = 0.050000002375
+shader_parameter/noise_speed = 5.0
+shader_parameter/static_noise_intensity = 0.0800000038
+shader_parameter/aberration = 0.00500004773750006
+shader_parameter/brightness = 1.15
+shader_parameter/discolor = false
+shader_parameter/warp_amount = 0.170000008075
+shader_parameter/clip_warp = false
+shader_parameter/vignette_intensity = 0.5
+shader_parameter/vignette_opacity = 0.5
 
 [sub_resource type="QuadMesh" id="QuadMesh_k6ibj"]
 size = Vector2(1.8, 1.4)
@@ -31,7 +60,36 @@ gui_embed_subwindows = true
 size = Vector2i(1152, 648)
 render_target_update_mode = 4
 
-[node name="ButtonMashGame" parent="SubViewport" unique_id=32019228 instance=ExtResource("1_h4uxg")]
+[node name="MonitorScreen" type="Control" parent="SubViewport" unique_id=490794283 node_paths=PackedStringArray("_buttonGame", "_criticalError")]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("2_cgi0b")
+_buttonGame = NodePath("ButtonMashGame")
+_criticalError = NodePath("CriticalError")
+
+[node name="CriticalError" parent="SubViewport/MonitorScreen" unique_id=959119981 instance=ExtResource("2_wkkyq")]
+layout_mode = 1
+script = ExtResource("4_802d4")
+
+[node name="ButtonMashGame" parent="SubViewport/MonitorScreen" unique_id=32019228 node_paths=PackedStringArray("_click") instance=ExtResource("1_h4uxg")]
+layout_mode = 0
+_click = NodePath("../../../Click")
+
+[node name="Shader" type="CanvasLayer" parent="SubViewport" unique_id=1889969779]
+
+[node name="VHSShader" type="ColorRect" parent="SubViewport/Shader" unique_id=211645337]
+material = SubResource("ShaderMaterial_c65tl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+metadata/_edit_use_anchors_ = true
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=601508946]
 mesh = SubResource("QuadMesh_k6ibj")
@@ -42,3 +100,7 @@ input_capture_on_drag = true
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/Area3D" unique_id=668697684]
 shape = SubResource("BoxShape3D_jfl88")
+
+[node name="Click" type="AudioStreamPlayer3D" parent="." unique_id=532460556]
+stream = ExtResource("3_q2me8")
+volume_db = -30.0
