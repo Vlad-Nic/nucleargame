@@ -5,6 +5,7 @@
 [ext_resource type="AudioStream" uid="uid://cc6qxii7esef7" path="res://Audio/menumusic.mp3" id="3_8saeu"]
 [ext_resource type="Texture2D" uid="uid://dm3yvxbniugkv" path="res://Assets/ASCII Art/skull.png" id="4_ghw46"]
 [ext_resource type="Shader" uid="uid://cxf8arg42tq20" path="res://Shaders/VHS.gdshader" id="5_df05h"]
+[ext_resource type="Script" uid="uid://cq35e6gdf8ps4" path="res://Scripts/TransitionManager.cs" id="6_8um5k"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bg"]
 bg_color = Color(0.02, 0.06, 0.02, 0.92)
@@ -150,4 +151,18 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+
+[node name="TransitionManager" type="Node" parent="." unique_id=764466834]
+script = ExtResource("6_8um5k")
+
+[node name="Transition" type="CanvasLayer" parent="TransitionManager" unique_id=1604908473]
+
+[node name="ColorRect" type="ColorRect" parent="TransitionManager/Transition" unique_id=835059588]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true

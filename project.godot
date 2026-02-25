@@ -22,6 +22,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 GlobalHealth="*uid://bnwnjdqffhcgd"
+TransitionManager="*uid://cq35e6gdf8ps4"
 
 [display]
 
@@ -31,6 +32,14 @@ mouse_cursor/custom_image="uid://d31gbu63rkq04"
 [dotnet]
 
 project/assembly_name="NuclearGame"
+
+[editor]
+
+version_control/autoload_on_startup=true
+
+[global]
+
+TransitionManager=false
 
 [input]
 

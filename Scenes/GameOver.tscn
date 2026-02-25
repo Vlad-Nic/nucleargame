@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://bsi4qn7wpetpg" path="res://Assets/Audio/PossibleLoss.wav" id="2_ktc4i"]
 [ext_resource type="Texture2D" uid="uid://cfijm3v61qcnr" path="res://Assets/Images/Nuclear.png" id="2_nuke"]
 [ext_resource type="Shader" uid="uid://cxf8arg42tq20" path="res://Shaders/VHS.gdshader" id="4_uib17"]
+[ext_resource type="Script" uid="uid://cq35e6gdf8ps4" path="res://Scripts/TransitionManager.cs" id="5_rdiyk"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_rdiyk"]
 shader = ExtResource("4_uib17")
@@ -115,4 +116,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TransitionManager" type="Node" parent="." unique_id=268531954]
+script = ExtResource("5_rdiyk")
+
+[node name="Transition" type="CanvasLayer" parent="TransitionManager" unique_id=2082554603]
+
+[node name="ColorRect" type="ColorRect" parent="TransitionManager/Transition" unique_id=1472602656]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true

@@ -1,10 +1,11 @@
 [gd_scene format=3 uid="uid://c80tpe75v637y"]
 
-[ext_resource type="Script" path="res://Scripts/WinScreen.cs" id="1_win"]
+[ext_resource type="Script" uid="uid://da4580332py36" path="res://Scripts/WinScreen.cs" id="1_win"]
 [ext_resource type="AudioStream" uid="uid://do6bb7wjtum3" path="res://Assets/Audio/PossibleWin.wav" id="2_82r0j"]
 [ext_resource type="Texture2D" uid="uid://d4clib2vlqmos" path="res://Assets/Images/FireWork.png" id="3_82r0j"]
 [ext_resource type="Texture2D" uid="uid://bh4iov588bbwt" path="res://Assets/Images/Trophy.png" id="3_fy21p"]
 [ext_resource type="Shader" uid="uid://cxf8arg42tq20" path="res://Shaders/VHS.gdshader" id="5_douls"]
+[ext_resource type="Script" uid="uid://cq35e6gdf8ps4" path="res://Scripts/TransitionManager.cs" id="6_6qhgi"]
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_6qhgi"]
 shader = ExtResource("5_douls")
@@ -126,4 +127,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TransitionManager" type="Node" parent="." unique_id=1911454546]
+script = ExtResource("6_6qhgi")
+
+[node name="Transition" type="CanvasLayer" parent="TransitionManager" unique_id=1688431517]
+
+[node name="ColorRect" type="ColorRect" parent="TransitionManager/Transition" unique_id=2099042523]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0, 0, 0, 1)
 metadata/_edit_use_anchors_ = true

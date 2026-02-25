@@ -10,6 +10,7 @@ public partial class Numble : Control
 	[Export] public AudioStreamPlayer3D _keyboard;
 	[Export] public AudioStreamPlayer3D _click;
 	[Export] public AudioStreamPlayer3D _release;
+	[Export] public AudioStreamPlayer3D _enterKey;
 	[Signal] public delegate void GameWonEventHandler();
 	[Signal] public delegate void GameLostEventHandler();
 	[Export] public float GlobalHealthPenalty = 15f; //how much the global health will lose on fail
@@ -296,23 +297,31 @@ public partial class Numble : Control
 
 	private void OnSlotChanged(string newText, int slotIdx)
 	{
+		// keep only first digit
 		string filtered = "";
 		foreach (char ch in newText)
 		{
-			if (char.IsDigit(ch)) { filtered = ch.ToString(); break; }
+			if (char.IsDigit(ch))
+			{
+				filtered = ch.ToString();
+				break;
+			}
+		}
+		// If user typed a digit, play sound
+		if (filtered.Length == 1 && newText != "")
+		{
+			_keyboard?.Stop();
+			_keyboard?.Play();
 		}
 
-		if (_inputSlots[slotIdx].Text != filtered)
+		// Apply filtering only if needed
+		if (newText != filtered)
 		{
 			_inputSlots[slotIdx].Text = filtered;
 			_inputSlots[slotIdx].CaretColumn = filtered.Length;
-			
-			if (filtered.Length == 1)
-			{
-				_keyboard.Play();
-			}
 		}
 
+		// Move focus
 		if (filtered.Length == 1 && slotIdx < Slots - 1)
 			_inputSlots[slotIdx + 1].GrabFocus();
 	}
@@ -324,17 +333,24 @@ public partial class Numble : Control
 		if (key.Keycode == Key.Backspace)
 		{
 			_keyboard.Play();
-			_inputSlots[slotIdx].Text = "";
-			if (slotIdx > 0)
+			
+			if (_inputSlots[slotIdx].Text.Length > 0)
 			{
+				// Current slot has text, just clear it
+				_inputSlots[slotIdx].Text = "";
+			}
+			else if (slotIdx > 0)
+			{
+				// Current slot is empty, move back and clear previous
 				_inputSlots[slotIdx - 1].GrabFocus();
 				_inputSlots[slotIdx - 1].Text = "";
 			}
+			
 			GetViewport().SetInputAsHandled();
 		}
 		else if (key.Keycode == Key.Enter || key.Keycode == Key.KpEnter)
 		{
-			_keyboard.Play();
+			_enterKey.Play();
 			OnSubmit();
 			GetViewport().SetInputAsHandled();
 		}

@@ -11,8 +11,11 @@ public partial class WinScreen : Control
 	private int _charIndex = 0;
 	private bool _done = false;
 
-	public override void _Ready()
+	public override async void _Ready()
 	{
+		var tm = GetNode<TransitionManager>("/root/TransitionManager");
+		await tm.FadeInTransition();
+		
 		MouseFilter = MouseFilterEnum.Stop;
 
 		_textLabel = GetNode<Label>("TextLabel");
@@ -48,7 +51,7 @@ public partial class WinScreen : Control
 			HandleInput();
 	}
 
-	private void HandleInput()
+	private async void HandleInput()
 	{
 		if (!_done)
 		{
@@ -59,6 +62,8 @@ public partial class WinScreen : Control
 		}
 		else
 		{
+			var tm = GetNode<TransitionManager>("/root/TransitionManager");
+			await tm.FadeOutTransition();
 			GetTree().ChangeSceneToFile("res://Scenes/MainMenu.tscn");
 		}
 	}
